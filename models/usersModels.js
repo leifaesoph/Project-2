@@ -5,7 +5,7 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     },
     phone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     email: {
@@ -17,19 +17,19 @@ module.exports = function (sequelize, DataTypes) {
     },
     borrowerRating: {
       type: DataTypes.DECIMAL(10, 2),
-      allowNull: false
+      allowNull: true
     },
     gives: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     gets: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     addInterest: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: true
     },
     interstRate: {
       type: DataTypes.DECIMAL(10, 2),
@@ -37,7 +37,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     balance: {
       type: DataTypes.DECIMAL(10, 2),
-      allowNull: false
+      allowNull: true
     }
   });
   return Users;
