@@ -8,10 +8,13 @@ module.exports = function(app) {
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Create a new user
+  app.post("/api/users", function(req, res) {
+    db.Users.create(req.body).then(function(dbUsers){
+      // res.json(dnUser) just for test
+      res.json(dbUsers);
+      // nees to create the routs to user page
+      // res.redirect("/api/users/:id");
     });
   });
 
