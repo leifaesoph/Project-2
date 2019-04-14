@@ -1,6 +1,8 @@
 require("dotenv").config();
 var express = require("express");
+var session = require("express-session");
 var exphbs = require("express-handlebars");
+var passport = require("./config/passport");
 
 var db = require("./models");
 
@@ -11,6 +13,10 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+// We need to use sessions to keep track of our user's login status
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Handlebars
 app.engine(
@@ -36,7 +42,8 @@ if (process.env.NODE_ENV === "test") {
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
-    console.log("Server listening on: http://localhost:" + PORT);
+    // console.log("Server listening on: http://localhost:" + PORT);
+    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT)
   });
 });
 
