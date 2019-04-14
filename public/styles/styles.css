@@ -1,3 +1,727 @@
-.list-group-item {
-  line-height: 2.5;
+
+/*FIX THE FOOTER
+SET OVERFLOW HIDDEN TO BODY
+FIX THE MEDIA QUERY FOR LANDSCAPE USING OVERFLOW AUTO TO BODY*/
+
+body{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  overflow: auto;
+  /* background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgba(77, 19, 209, 1))) fixed; */
 }
+.logo-cont{
+    margin-top:0px;
+}
+
+.contain1{
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    
+}
+
+.logsignwrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    
+    height: 100%;
+    border-radius: 20px;
+    margin: 0;
+
+}
+
+.introhalf{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    /* border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px; */
+    height: 100vw;
+    background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgba(77, 19, 209, 1))) fixed;
+    /* background:rgba(77, 19, 209, 1); */
+    color: white;
+    
+}
+.loginInner {
+    width:90%;
+    overflow: auto;
+    margin-top: 50px;
+    
+
+}
+.signupInner {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    
+}
+.signup{
+    width: 50%;
+    height: 100vw;
+    /* border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px; */
+    
+}
+.signupform{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    
+
+}
+.signupform1{
+    width: 50%;
+
+    
+
+}
+.signupform2{
+    width: 50%;
+
+
+}
+
+
+.loginoption {
+    justify-content: center;
+    display: flex;
+    padding-bottom: 10px;
+    /* border-top-right-radius: 20px; */
+    margin-top: 100px;
+}
+.loginoption2 {
+
+    width:80%;
+    flex-direction: row;
+}
+
+.loginemailfield {
+    width:100%;
+   
+}
+.loginpassfield {
+    width:100%;
+    margin-top: 20px;
+}
+
+.formgroup {
+    justify-content: center;
+    display: flex;
+}
+
+.loginbtnwrap{
+    display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+.loginbtn{
+display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 80%;
+}
+
+.imgwrap1 {
+    width:50%;
+
+}
+.btnloginwrap1 {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+.btnlogin{
+    background-color: transparent;
+    width: 80px;
+    height: 40px;
+    border-style: solid;
+    border-width: 1px;
+ 
+    outline: none !important;
+    color: white;
+    border-radius: 50px;
+    text-align: center;
+    margin-top: 10px;
+    background: rgba(142, 68, 173, .8);
+    box-shadow: 5px 2px rgba(142, 68, 173, 0.5);
+    
+
+}
+
+.btnlogin:hover {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2); 
+}
+
+.btnsubmit2 {
+    background-color: transparent;
+    width: 80px;
+    height: 40px;
+    border-style: solid;
+    border-width: 1px;
+ 
+    outline: none !important;
+    color: white;
+    border-radius: 50px;
+    text-align: center;
+    margin-top: 0px;
+    background:rgba(142, 68, 173, .8);
+    box-shadow: 5px 2px rgba(142, 68, 173, 0.5);
+}
+.btnsubmit2:hover {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2); 
+}
+.signuptext1 {
+    margin:0;
+    /* justify-content: center;
+    display: flex; */
+    
+}
+.signuptext {
+    margin-left: 10px;
+    margin-top:30px; 
+    /* justify-content: ce
+    nter;
+    display: flex; */
+}
+
+p {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.submitbtn2 {
+    display: flex;
+    justify-content: center;
+}
+.photo-cont1{
+    width: 190px;
+    height: 190px;
+    background: transparent;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 30px;
+    background: rgba(102, 51, 153, .2);
+  }
+  .photo-cont2{
+    width: 180px;
+    height: 180px;
+    background: rgba(102, 51, 153, .6);
+    display: inline-block;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    border-radius: 50%;
+  }
+
+  .idphoto{
+    position: absolute;
+    display: inline-block;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    /* border-radius: 50%; */
+  }
+  
+
+  .formcontrol{
+      background-color: transparent;
+      width: 90%;
+      height: 30px;
+      border-style: solid;
+      border-width: 1px;
+      border-color:rgba(102, 51, 153, .8);
+      outline: none !important;
+      color: black;
+      border-radius: 5px;
+      text-align: center;
+  }
+
+  .formcontrol:focus {
+	outline: none !important;
+}
+
+.formcontrol1{
+    background-color: transparent;
+    width: 80%;
+    height: 35px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(102, 51, 153, .8);
+    outline: none !important;
+    color: black;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.formcontrol1:focus {
+  outline: none !important;
+}
+
+
+::placeholder{
+    color: gray;
+}
+
+.btn1{
+	background-color: transparent;
+  border-style: none;
+  border-color: transparent;
+  border-radius: 50%;
+  width: 240px;
+  height: 240px;
+
+}
+
+
+button:focus,
+select:focus {
+  outline: none;
+}
+
+
+/* 
+#overlay-me {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+
+}
+ */
+.head-pic1{
+  display: flex;
+  justify-content: center;
+}
+
+/* ------------------------------------------------ */
+
+/* USER'S PAGE */
+
+.head-picuser{
+  display: flex;
+  justify-content: center;
+}
+
+.usercont1 {
+
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgb(94, 34, 233))) fixed;
+  width: 100%;
+  height: 100%;
+  
+}
+
+.photo-usercont1{
+  width: 190px;
+  height: 190px;
+  background: transparent;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: 30px;
+  background: whit;
+}
+.photo-usercont2{
+  width: 190px;
+  height: 190px;
+  background: rgba(102, 51, 153, .6);
+  display: inline-block;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  border-radius: 50%;
+}
+
+.idphotouser{
+  position: absolute;
+  display: inline-block;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  /* border-radius: 50%; */
+}
+
+.contentswrapper {
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+.contents {
+width: 70%;
+  height: 100%;
+}
+
+.notificationwrap {
+  justify-content: center;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.transactionswrap {
+display: flex;
+
+}
+
+.moneyyougave {
+  width: 50%;
+  justify-content: center;
+  display: flex;
+  height: 200px;
+ 
+
+}
+.moneyupdateyougave {
+  width: 95%;
+  justify-content: center;
+  display: flex;
+  height: 200px;
+  background: rgba(102, 51, 153, .3);
+  overflow: auto;
+  border-radius: 20px;
+  color: white;
+
+}
+.moneyupdateyouowe {
+  width: 95%;
+  justify-content: center;
+  display: flex;
+  height: 200px;
+  background: rgba(102, 51, 153, .3);
+  overflow: auto;
+
+  border-radius: 20px;
+  color: white;
+
+}
+
+
+.moneyyouowe {
+  width: 50%;
+  justify-content: center;
+  display: flex;
+
+}
+
+
+.addtransnwrap {
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+}
+.addtranscont {
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+}
+
+.btnaddtrans {
+  background-color: transparent;
+  width: 80px;
+  height: 40px;
+  border-style: solid;
+  border-width: 1px;
+
+  outline: none !important;
+  color: white;
+  border-radius: 50px;
+  text-align: center;
+  margin-top: 0px;
+  background:rgba(142, 68, 173, .8);
+  box-shadow: 5px 2px rgba(142, 68, 173, 0.5);
+}
+.btnaddtrans:hover {
+-ms-transform: scale(1.2); /* IE 9 */
+-webkit-transform: scale(1.2); /* Safari 3-8 */
+transform: scale(1.2); 
+}
+
+
+@media (max-width: 650px){
+
+body {
+  overflow: auto;
+  
+}
+  .logsignwrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    height: 100%;
+    border-radius: 20px;
+    margin: 0;
+    overflow: auto;
+
+}
+
+.signup{
+  width: 100%;
+  height: 100vw;
+  /* border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px; */
+  
+}
+.signupform{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  
+
+}
+.signupform1{
+  width: 50%;
+
+  
+
+}
+.signupform2{
+  width: 50%;
+
+
+}
+
+.introhalf{
+  width: 100%;
+   
+}
+
+.photo-cont1{
+
+  margin-top: 0px;
+
+}
+
+.loginoption {
+  justify-content: center;
+  display: flex;
+  padding-bottom: 10px;
+  /* border-top-right-radius: 20px; */
+  margin-top: 0px;
+}
+
+.loginInner {
+  width:90%;
+  overflow: auto;
+  margin-top: 10px;
+  
+
+}
+
+.signuptext {
+  
+  margin-top:10px; 
+  /* justify-content: ce
+  nter;
+  display: flex; */
+}
+
+.transactionswrap {
+  display: flex;
+  flex-direction: column;
+    justify-content: center;
+  
+  }
+
+  .moneyyougave {
+    width: 100%;
+
+  
+  }
+
+  .moneyyouowe {
+    width: 100%;
+    margin-top: 20px;
+  
+
+  }
+  
+  
+  .contents {
+    width: 100%;
+      height: 100%;
+    }
+
+}
+
+
+
+/* @media (device-height: 1024px) and (device-width: 768px) and (-webkit-min-device-pixel-ratio: 2){
+
+.mainwrap{
+
+  width: 100%;
+
+}
+  .wrap1{
+  width: 80%;
+
+
+}
+
+.card1cont{
+
+  width: 100%;
+
+  }
+
+
+  .about-me {
+  width: 90%;
+  
+}
+
+.mainwrap3{
+  width: 100%;
+  
+}
+
+.wrap3{
+  width: 90%;
+
+  
+}
+
+} */
+
+@media (device-height: 375px) and (device-width: 812px) and (-webkit-min-device-pixel-ratio: 2){
+body{
+
+  overflow:auto;
+}
+
+}
+@media (device-height: 812px) and (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2){
+
+
+  .logsignwrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    height: 100%;
+    border-radius: 20px;
+    margin: 0;
+
+}
+
+.signup{
+  width: 100%;
+  height: 100vw;
+  /* border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px; */
+  
+}
+.signupform{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  
+
+}
+.signupform1{
+  width: 50%;
+
+  
+
+}
+.signupform2{
+  width: 50%;
+
+
+}
+
+.introhalf{
+  width: 100%;
+   
+}
+
+.photo-cont1{
+
+  margin-top: 0px;
+
+}
+
+.loginoption {
+  justify-content: center;
+  display: flex;
+  padding-bottom: 10px;
+  /* border-top-right-radius: 20px; */
+  margin-top: 0px;
+}
+
+.loginInner {
+  width:90%;
+  overflow: auto;
+  margin-top: 10px;
+  
+
+}
+
+.signuptext {
+  
+  margin-top:10px; 
+  /* justify-content: ce
+  nter;
+  display: flex; */
+}
+
+.transactionswrap {
+  display: flex;
+  flex-direction: column;
+    justify-content: center;
+  
+  }
+
+  .moneyyougave {
+    width: 100%;
+
+  
+  }
+
+  .moneyyougowe {
+    width: 100%;
+    margin-top: 20px;
+  
+
+  }
+  
+  
+  .contents {
+    width: 100%;
+      height: 100%;
+    }
+
+}
+
+
+
+
+
+
