@@ -117,6 +117,5 @@ $(".photo-usercont2").mouseover(function(){
 
 $(".addphotowrap").mouseleave(function(){
    $(".addphotowrap").fadeOut();
-
    
 });
