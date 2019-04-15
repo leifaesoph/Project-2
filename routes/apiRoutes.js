@@ -52,6 +52,18 @@ module.exports = function (app) {
       });
     }
   });
+
+  app.post("/api/sendTrans", function (req, res) {
+    console.log(req.body);
+    db.Transactions.create(req.body).then(function (dbTransactions) {
+      res.json("/users");
+      
+    }).catch(function (err) {
+      console.log(err);
+      res.json(err);
+    });
+  });
+
   // Delete an example by id
   app.delete("/api/examples/:id", function (req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {

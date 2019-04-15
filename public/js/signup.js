@@ -29,9 +29,7 @@ $(document).ready(function() {
               console.log(data);
             window.location.replace("/users");
         //     // If there's an error, log the error
-          }).catch(function(err) {
-            console.log(err);
-          });
+          })
         })
         // .catch(error => console.log(error));
     });
