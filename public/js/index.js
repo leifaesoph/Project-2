@@ -97,3 +97,25 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+
+
+$(".footer2").click(function(){
+  $("#overlay-addtrans").fadeOut(500);
+});
+
+  $("#btnaddtransid").click(function(){
+  $("#overlay-addtrans").fadeIn(500);
+  // $("#overlay-me").fadeOut(500);
+  // $("#overlay-portfolio").fadeOut(500);
+  
+});
+
+$(".photo-usercont2").mouseover(function(){
+  $(".addphotowrap").fadeIn();
+});
+
+$(".addphotowrap").mouseleave(function(){
+   $(".addphotowrap").fadeOut();
+   
+});

@@ -13,24 +13,48 @@
 
 <body>
     <div class="usercont1">
-
         <div class="head-picuser">
             <div class="photo-usercont1">
+                
                 <div class="photo-usercont2">
                     <img src="./images/45500630.jpeg" class="idphotouser" style="width:200px;height:200px" alt=“…”>
+                    
+                    
                 </div>
             </div>
         </div>
         <div class="contentswrapper">
             <div class="contents">
+                    <div class="addphotowrap" style="display:none;">
+                        
+                            <div class="addphotocontain">
+                                
+                                    <div class="adduserphoto">
+                                            <div class="camicon"><img src="./images/Antu_folder-camera.png"
+                                                style="width:60px;height:60px" alt=“…”></div>
+                                            <!-- <span style="display:none;"> Dog Content</span>
+                                            <span style="display:none;"> Snake Content</span>     -->
+                                          <div class="cloudinarybtn" ><form action='/api/images' method="post" enctype="multipart/form-data">
+                                    <input type='file' name='image' />
+                                </form></div>
+                            </div>
+                            </div>
+                        </div>
+                <div class="usernamewrap">
+                    <div class="usernamecontain">
+                        User Name:
+                    </div>
+                </div>
+
+                
+
+
                 <div class="notificationwrap">
                     <div class="notificationcontain">
                         Notifications
                     </div>
                 </div>
-
                 <div class="transactionswrap">
-
                     <div class="moneyyougave">
                         <div class="moneyupdateyougave">
                             <div class="gaveInputs">
@@ -47,29 +71,82 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="addtranswrap">
                     <div class="addtranscont">
-
-                        <button type="submit" class="btnaddtrans">Add Trans</button>
-
+                        <button id="btnaddtransid" type="submit" class="btnaddtrans">Add Trans</button>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="overlay-addtrans" style="display:none">
+
+        <div class="transactionmodalwrap">
+            <div class="trasactionmodalcontainer">
+                <div class="trasactionmodalcontents">
+
+                    <div>
+                        <h3>Transaction</h3>
+                    </div>
+
+                    <div>
+                        <span>User Name (based on ID): </span><span class="username-from-DB">Blank</span>
+                    </div>
+
+                    <div>
+                            <form action="">
+                            <div class="lendersinputwrap">
+                                    <div class="form-group">
+                                        <p><label for="borrowersemail">Lend to</label></p>
+                                        <input type="email" name="borrowersemail" class="borrowersemail" id="borrowersemailid"
+                                            aria-describedby="emailHelp" placeholder="Borrower's Email">
+                                    </div>
+
+                                    <div class="form-group">
+                                            <p><label for="amount">Amount</label></p>
+                                            <input type="text" name="amount" class="amounttogive" id="amounttogiveid"
+                                                placeholder="Enter Amount">
+                                        </div>
+                                        <div class="form-group">
+                                                <p><label for="datetopay">Due Date</label></p>
+                                                <input type="date" name="datetopay" class="datetopay" id="datetopayid"
+                                                    placeholder="Enter Due Date">
+                                            </div>
+                                            <div class="form-group">
+                                                    <p><label for="msg">Message</label></p>
+                                                    <input type="text" name="msg" class="msgtoborrower" id="msgtoborrowerid"
+                                                        placeholder="Write Message">
+                                                </div>
+
+                                                <div class="sendwrap">
+                                                        <div class="sendcont">
+                                                            <button id="sendbtnid" type="submit" class="btnsend">Send</button>
+                                                        </div>
+                                                    </div>
+
+                                </div>
+                                </form>
+                        </div>
+                </div>
+
+            </div>
+
+
+
 
         </div>
-
-
-
-
-
-
+        <div class="footer2">
+            <p class="pfooter">Back</p>
+        </div>
     </div>
 
 
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
-    <script src="js/blog.js" type="text/javascript"></script>
+    <script src="./js/index.js" type="text/javascript"></script>
 
 </body>
 

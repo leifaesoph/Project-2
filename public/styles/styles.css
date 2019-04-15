@@ -11,6 +11,7 @@ body{
   overflow: auto;
   /* background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgba(77, 19, 209, 1))) fixed; */
 }
+
 .logo-cont{
     margin-top:0px;
 }
@@ -220,9 +221,9 @@ p {
     left:50%;
     transform: translate(-50%, -50%);
     position: relative;
-    overflow: hidden;
     margin: 0;
     border-radius: 50%;
+    
   }
 
   .idphoto{
@@ -233,6 +234,7 @@ p {
     transform: translate(-50%, -50%);
     border-radius: 20px;
     /* border-radius: 50%; */
+    z-index: -1;
   }
   
 
@@ -273,6 +275,7 @@ p {
 
 ::placeholder{
     color: gray;
+    font-size: 15px;
 }
 
 .btn1{
@@ -290,6 +293,11 @@ button:focus,
 select:focus {
   outline: none;
 }
+
+
+
+
+
 
 
 /* 
@@ -336,7 +344,7 @@ select:focus {
   border-radius: 50%;
   overflow: hidden;
   margin-top: 30px;
-  background: whit;
+  background: white;
 }
 .photo-usercont2{
   width: 190px;
@@ -379,6 +387,18 @@ width: 70%;
   display: flex;
   margin-bottom: 20px;
 }
+
+.usernamewrap {
+  justify-content: center;
+  display: flex;
+  margin-bottom: 20px;
+}
+.addphotowrap {
+  /* justify-content: center;
+  display: flex; */
+  margin-bottom: 20px;
+}
+
 
 .transactionswrap {
 display: flex;
@@ -458,6 +478,211 @@ display: flex;
 transform: scale(1.2); 
 }
 
+.adduserphoto {
+  justify-content: center;
+  display: flex;
+}
+
+.cloudinarybtn {
+  margin-top: 20px;
+}
+
+
+
+/* MODAL TRANSACTION */
+
+
+#overlay-addtrans {
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.transactionmodalwrap {
+  justify-content: center;
+  display: flex;
+  color: white;
+}
+
+.trasactionmodalcontainer {
+  justify-content: center;
+  display: flex;
+  
+  width: 60%;
+  height: 450px;
+  margin-top: 50px;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+
+}
+
+.trasactionmodalcontents {
+  
+  width: 90%;
+ 
+}
+.footer2 {
+  justify-content: center;
+  display: flex;
+  color: white; 
+}
+.username-from-DB {
+  border-bottom: solid;
+  border-width: 1px;
+  border-bottom-color: white;
+  color: white;
+}
+
+.borrowersemail{
+  background-color: rgba(226, 193, 243, 0.8);
+  width: 80%;
+  height: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-color:white;
+  outline: none !important;
+  color: black;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+}
+
+.borrowersemail:focus {
+outline: none !important;
+}
+
+.borrowersemail::placeholder {
+  color:gray;
+}
+.amounttogive{
+  background-color: rgba(226, 193, 243, 0.8);
+  width: 80%;
+  height: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-color:white;
+  outline: none !important;
+  color: black;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+}
+
+.amounttogive:focus {
+outline: none !important;
+}
+
+.amounttogive::placeholder {
+  color: gray;
+}
+
+.datetopay{
+  background-color: rgba(226, 193, 243, 0.8);
+  width: 80%;
+  height: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-color:white;
+  outline: none !important;
+  color: black;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+}
+
+.datetopay:focus {
+outline: none !important;
+}
+
+.datetopay::placeholder {
+  color:gray;
+}
+
+.msgtoborrower{
+  background-color: rgba(226, 193, 243, 0.8);
+  width: 80%;
+  height: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-color:white;
+  outline: none !important;
+  color: black;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+}
+
+.msgtoborrower:focus {
+outline: none !important;
+}
+
+.msgtoborrower::placeholder {
+  color:gray;
+}
+
+.sendwrap {
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+}
+.sendcont {
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+}
+
+.btnsend {
+  background-color: transparent;
+  width: 80px;
+  height: 40px;
+  border-style: solid;
+  border-width: 1px;
+
+  outline: none !important;
+  color: white;
+  border-radius: 50px;
+  text-align: center;
+  margin-top: 0px;
+  background:rgba(142, 68, 173, .8);
+  box-shadow: 5px 2px rgba(142, 68, 173, 0.5);
+}
+.btnsend:hover {
+-ms-transform: scale(1.2); /* IE 9 */
+-webkit-transform: scale(1.2); /* Safari 3-8 */
+transform: scale(1.2); 
+}
+/* 
+.addphotowrap{
+  color:rgba(1, 50, 67, 1);
+  z-index: 99;
+  margin-top: 150px;
+  background-color: rgba(46, 49, 49, .6);
+  width: 100%;
+  height: 20px;
+  color:white;
+  padding-bottom: 10px;
+  text-align: center;
+  
+}
+
+.front-namespar {
+  padding-bottom: 40px;
+  z-index: 99;
+} */
 
 @media (max-width: 650px){
 
