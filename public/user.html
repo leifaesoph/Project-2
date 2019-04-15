@@ -25,14 +25,36 @@
         </div>
         <div class="contentswrapper">
             <div class="contents">
+                    <div class="addphotowrap" style="display:none;">
+                        
+                            <div class="addphotocontain">
+                                
+                                    <div class="adduserphoto">
+                                            <div class="camicon"><img src="./images/Antu_folder-camera.png"
+                                                style="width:60px;height:60px" alt=“…”></div>
+                                            <!-- <span style="display:none;"> Dog Content</span>
+                                            <span style="display:none;"> Snake Content</span>     -->
+                                          <div class="cloudinarybtn" ><form action='/api/images' method="post" enctype="multipart/form-data">
+                                    <input type='file' name='image' />
+                                </form></div>
+                            </div>
+                            </div>
+                        </div>
+                <div class="usernamewrap">
+                    <div class="usernamecontain">
+                        User Name:
+                    </div>
+                </div>
+
+                
+
+
                 <div class="notificationwrap">
                     <div class="notificationcontain">
                         Notifications
                     </div>
                 </div>
-
                 <div class="transactionswrap">
-
                     <div class="moneyyougave">
                         <div class="moneyupdateyougave">
                             <div class="gaveInputs">
@@ -49,13 +71,10 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="addtranswrap">
                     <div class="addtranscont">
-
-                        <button type="submit" class="btnaddtrans">Add Trans</button>
-
+                        <button id="btnaddtransid" type="submit" class="btnaddtrans">Add Trans</button>
                     </div>
                 </div>
             </div>
