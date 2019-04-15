@@ -42,7 +42,7 @@
                         </div>
                 <div class="usernamewrap">
                     <div class="usernamecontain">
-                        DATA User Name
+                        Hello, 
                     </div>
                 </div>
 
@@ -51,18 +51,18 @@
 
                 <div class="notificationwrap">
                     <div class="notificationcontain">
-                        Notifications
+                        Balance: $<span> [All Loans] - [All Debts]</span>
                     </div>
                 </div>
                 <div class="transactionswrap">
                     <div class="moneyyougave">
                         <div class="moneyupdateyougave">
                             <div class="contfortitle">
-                                <div class="moneyyougivetitle"><p>Money you give</p></div>
+                                <div class="moneyyougivetitle"><p>U</p></div>
                             </div>
                                 <div class="contforinputs">
                                 <div class="gaveInputs">
-                                        //DATA AMOUNT
+                                        <span>SELECT * from (transactions) WHERE Lender_id = accountID</span>
                                     </div>     
                             </div>
                         </div>
@@ -71,11 +71,11 @@
                     <div class="moneyyouowe">
                         <div class="moneyupdateyouowe">
                                 <div class="contfortitle">
-                                <div class="moneyyouowetitle"><p>Money you Owe</p></div>
+                                <div class="moneyyouowetitle"><p>O</p></div>
                             </div>
                                 <div class="contforinputs">
                             <div class="oweInputs">
-                                //DATA AMOUNT
+                                <span>SELECT * from (transactions) WHERE Borrower_id = accountID</span>
                             </div>
                         </div>
                         </div>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="addtranswrap">
                     <div class="addtranscont">
-                        <button id="btnaddtransid" type="submit" class="btnaddtrans">Add Trans</button>
+                        <button id="btnaddtransid" type="submit" class="btnaddtrans">Add Transaction</button>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                 <div class="trasactionmodalcontents">
 
                     <div>
-                        <h3>Transaction</h3>
+                        <h3>Log a New Transaction</h3>
                     </div>
 
                     <div>
@@ -115,7 +115,7 @@
 
                                     <div class="form-group">
                                             <p><label for="amount">Amount</label></p>
-                                            <input type="text" name="amount" class="amounttogive" id="amounttogiveid"
+                                            <input type="money" default="USD" name="amount" class="amounttogive" id="amounttogiveid"
                                                 placeholder="Enter Amount">
                                         </div>
                                         <div class="form-group">
@@ -126,7 +126,7 @@
                                             <div class="form-group">
                                                     <p><label for="msg">Message</label></p>
                                                     <input type="text" name="msg" class="msgtoborrower" id="msgtoborrowerid"
-                                                        placeholder="Write Message">
+                                                        placeholder="Send a message to the borrower!">
                                                 </div>
 
                                                 <div class="sendwrap">
