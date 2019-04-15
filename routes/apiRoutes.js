@@ -1,5 +1,7 @@
 var db = require("../models");
 var passport = require('passport');
+var nodemailer = require('nodemailer');
+
 module.exports = function (app) {
   // Get all examples
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
@@ -25,4 +27,7 @@ module.exports = function (app) {
       res.json(dbExample);
     });
   });
+
+  // Send test email via nodemailer
+
 };
