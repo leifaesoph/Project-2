@@ -17,6 +17,10 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true,
             default: null
         },
+        message: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
         lenderId: {
             type: DataTypes.INTEGER,
             allowNull: false

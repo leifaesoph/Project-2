@@ -1,6 +1,10 @@
 var db = require("../models");
 var passport = require('passport');
 var nodemailer = require('nodemailer');
+var moment = require('moment');
+ var currentDate= moment().format('L');
+//  console.log("DATE: " + currentDate);
+ 
 
 module.exports = function (app) {
   // Get all examples
@@ -65,22 +69,44 @@ module.exports = function (app) {
           email: req.user.email
         }
       }).then(function (data) {
-        console.log("KKKKK" + data.name)
         res.json(data);
       });
     }
   });
 
   app.post("/api/sendTrans", function (req, res) {
-    console.log(req.body);
-    db.Transactions.create(req.body).then(function (dbTransactions) {
-      res.json("/users");
+    // console.log(req.body);
+    // console.log(req.user.email);
+    db.Users.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(function (data) {
+      if (data != null) {
+        console.log(data);
+        console.log(req.body);
 
+    var transaction= {
+      amount: req.body.amount,
+      message: req.body.msg,
+      dueDate: req.body.datetopay,
+      currentDate:currentDate
+    };
+    // console.log(request);
+    db.Transactions.create(transaction).then(function (transaction) {      
+      res.json("/users");
     }).catch(function (err) {
       console.log(err);
       res.json(err);
     });
+  } else {
+    res.status(400);
+    res.send('Email not found');
+  };
   });
+  });
+
+
 
   // Delete an example by id
   app.delete("/api/examples/:id", function (req, res) {
@@ -91,6 +117,7 @@ module.exports = function (app) {
 
   app.get("/api/user_loans", function (req, res) {
     console.log(req)
+    //how about 
     db.Transactions.findAll({
       where: {
         lenderId: userData.id
