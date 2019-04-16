@@ -8,11 +8,11 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
     <link rel="stylesheet" href="./styles/styles.css" media="screen" title="no title">
     <script src="https://code.jquery.com/jquery.js"></script>
-    
 
-    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>  
-    
-    
+
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+
+
 </head>
 
 <body>
@@ -26,7 +26,7 @@
             <div class="photo-usercont1">
 
                 <div class="photo-usercont2">
-                    <img src="./images/45500630.jpeg" class="idphotouser" style="width:200px;height:200px" alt=“…”>
+                    <img src="./images/45500630.jpeg" class="idphotouser" style="width:200px;height:200px" alt=“…” id= "userphoto">
 
 
                 </div>
@@ -34,29 +34,30 @@
         </div>
         <div class="contentswrapper">
             <div class="contents">
-                    <div class="addphotowrap" style="display:none;">
-                        
-                            <div class="addphotocontain">
-                                
-                                    <div class="adduserphoto">
+                <div class="addphotowrap" style="display:none;">
 
-                                            <!-- <div class="camicon"><img src="./images/Antu_folder-camera.png"
+                    <div class="addphotocontain">
+
+                        <div class="adduserphoto">
+
+                            <!-- <div class="camicon"><img src="./images/Antu_folder-camera.png"
                                                 style="width:60px;height:60px" alt=“…”></div> -->
-                                                <button id="upload_widget" class="cloudinarybutton camicon"><img src="./images/Antu_folder-camera.png"
-                                                    style="width:60px;height:60px" alt=“…”></button>
-                                            
-                                          <!-- <div class="cloudinarybtn" ><form action='/api/images' method="post" enctype="multipart/form-data">
+                            <button type="button" id="upload_widget" class="cloudinarybutton camicon"><img
+                                    src="./images/Antu_folder-camera.png" style="width:60px;height:60px"
+                                    alt=“…”></button>
+
+                            <!-- <div class="cloudinarybtn" ><form action='/api/images' method="post" enctype="multipart/form-data">
                                     <input type='file' name='image' />
                                 </form>
                             </div> -->
 
-                            </div>
-                            </div>
                         </div>
+                    </div>
+                </div>
 
                 <div class="usernamewrap">
                     <div class="usernamecontain">
-                        <h2>Hello <span class="user-name"></span></h2> 
+                        <h2>Hello <span class="user-name"></span></h2>
                     </div>
                 </div>
 
@@ -124,7 +125,7 @@
 
                     <div>
                         <!-- ADDED POST -->
-                            <form>
+                        <form>
                             <div class="lendersinputwrap">
                                 <div class="form-group">
                                     <p><label for="borrowersemail">Lend to</label></p>
@@ -173,36 +174,42 @@
 
 
 
-    <script type="text/javascript">  
+    <script type="text/javascript">
+    var userImage;
         var myWidget = cloudinary.createUploadWidget({
-          cloudName: 'dushe8phr', 
-          uploadPreset: 'pzuiyhku'}, (error, result) => { 
-            if (!error && result && result.event === "success") { 
-              console.log('Done! Here is the image info: ', result.info); 
+            cloudName: 'dushe8phr',
+            uploadPreset: 'pzuiyhku'
+        }, (error, result) => {
+            if (!error && result && result.event === "success") {
+                console.log('Done! Here is the image info: ', result.info.url);
+                userImage = result.info.url;
 
-              if (result.event === "success") {
-                    let imageInfo = result.event.info;
-                    let publicId = imageInfo.public_id;
-                    let thumbnailUrl = imageInfo.thumbnail_url;
-                    let url = imageInfo.url;
+                if (result.event === "success") {
+
+                    let publicId = result.public_id;
+                    let thumbnailUrl = result.thumbnail_url;
+                    let url = result.url;
 
                     //send image info to our database
+
                 }
 
 
             }
-          }
+            document.getElementById("userphoto").setAttribute("src", userImage);
+        }
         )
-        
-        document.getElementById("upload_widget").addEventListener("click", function(){
+
+        document.getElementById("upload_widget").addEventListener("click", function () {
             myWidget.open();
-          }, false);
-        </script>
+        }, false);
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
     <script src="./js/index.js" type="text/javascript"></script>
     <script src="js/users.js" type="text/javascript"></script>
     <script src="js/logout.js" type="text/javascript"></script>
     <script src="js/trans.js" type="text/javascript"></script>
+
 </body>
 
 </html>
