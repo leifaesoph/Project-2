@@ -6,6 +6,8 @@ $(document).ready(function() {
     var nameInput = $("input#nameInput");
     var phoneInput = $("input#contactInput");
   
+
+    //DMS UPDATED THIS MONDAY PM -----------------------------------------------------------------
     // When the signup button is clicked, we validate the email and password are not blank
     $(".btnsubmit2").on("click", function(event) {
       event.preventDefault();
@@ -16,23 +18,29 @@ $(document).ready(function() {
         phone: phoneInput.val().trim()
       };
       console.log(userData)
-      $.ajax({
-          url:"/api/signup",
-          method: "POST",
-          data: userData
-      }).then(function(err,data){
-        // if(err) throw err;
+
+      var promise = $.post("/api/signup", userData);
+      
+      promise.then(function(data){
           $.post("/api/login", {
             email:  emailInput.val().trim(),
             password: passwordInput.val().trim()
+
           }).then(function(data) {
               console.log(data);
             window.location.replace("/users");
         //     // If there's an error, log the error
-          }).catch(function(err) {
-            console.log(err);
-          });
+          })
+        }, function(err) {
+          $('.errormessage').fadeIn(500).fadeOut(1000); 
+          // $("").append("error");
+          // alert(err.responseText);
         })
-        // .catch(error => console.log(error));
     });
-    });
+  });
+
+  //-------------------------------------------------------------------------------
+
+
+
+    

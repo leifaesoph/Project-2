@@ -12,6 +12,26 @@ body{
   /* background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgba(77, 19, 209, 1))) fixed; */
 }
 
+
+/* DMS MON PM----------------------- */
+.loginsignuplinkwrap {
+  text-align: center;
+  margin-top: 100px;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.loginsignuplink {
+  color: white;
+}
+
+.loginsignuplink:hover {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2); 
+}
+
 .logo-cont{
     margin-top:0px;
 }
@@ -41,10 +61,11 @@ body{
     justify-content: center;
     /* border-top-left-radius: 20px;
     border-bottom-left-radius: 20px; */
-    height: 100vw;
+    height: 100%;
     background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgba(77, 19, 209, 1))) fixed;
     /* background:rgba(77, 19, 209, 1); */
     color: white;
+    padding-bottom: 100px;
     
 }
 .loginInner {
@@ -62,7 +83,7 @@ body{
 }
 .signup{
     width: 50%;
-    height: 100vw;
+    height: 100%;
     /* border-top-right-radius: 20px;
     border-bottom-right-radius: 20px; */
     
@@ -343,7 +364,7 @@ select:focus {
   background: transparent;
   border-radius: 50%;
   overflow: hidden;
-  margin-top: 30px;
+  margin-top: 0px;
   background: white;
 }
 .photo-usercont2{
@@ -557,9 +578,25 @@ transform: scale(1.2);
   display: flex;
 }
 
+.cloudinarybutton {
+  background: transparent;
+  border: none;
+}
+
+h2 {
+  margin: 0;
+}
+
+.logoutbtn {
+  display: flex;
+  justify-content: flex-end;
+}
+/* 
 .cloudinarybtn {
   margin-top: 20px;
-}
+} */
+
+
 
 
 
@@ -570,7 +607,7 @@ transform: scale(1.2);
   position: absolute;
   display: none;
   width: 100%;
-  height: 100%;
+  height: 100vw;
   top: 0;
   left: 0;
   right: 0;
@@ -625,7 +662,7 @@ transform: scale(1.2);
   border-width: 1px;
   border-color:white;
   outline: none !important;
-  color: black;
+  color: white;
   border-radius: 5px;
   text-align: center;
   font-size: 15px;

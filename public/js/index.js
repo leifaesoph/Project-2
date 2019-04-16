@@ -119,3 +119,9 @@ $(".addphotowrap").mouseleave(function(){
    $(".addphotowrap").fadeOut();
    
 });
+
+$(".loginsignuplinkdiv").click(function(){
+  // $(".signup").fadeIn(1000);
+  $(".signup").toggle("slide");
+  
+});
