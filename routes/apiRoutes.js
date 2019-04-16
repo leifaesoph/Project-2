@@ -74,9 +74,12 @@ module.exports = function (app) {
     }
   });
 
+
+    //DMS UPDATED THIS MONDY MN-----------------------------------
+
   app.post("/api/sendTrans", function (req, res) {
-    // console.log(req.body);
-    // console.log(req.user.email);
+    console.log(req.body);
+
     db.Users.findOne({
       where: {
         email: req.body.email
@@ -86,56 +89,59 @@ module.exports = function (app) {
         console.log(data);
         console.log(req.body);
 
-    var transaction= {
-      amount: req.body.amount,
-      message: req.body.msg,
-      dueDate: req.body.datetopay,
-      currentDate:currentDate
-    };
-    // console.log(request);
-    db.Transactions.create(transaction).then(function (transaction) {      
-      res.json("/users");
-    }).catch(function (err) {
-      console.log(err);
-      res.json(err);
+        var transaction = {
+          borrowerId: data.id,
+          lenderId: req.body.lenderId,
+          currentDate: currentDate,
+          amount: req.body.amount,
+          dueDate: req.body.dueDate
+        }
+
+        db.Transactions.create(transaction).then(function (transaction) {
+          
+          res.json("/users");
+        }).catch(function (err) {
+          console.log(err);
+          res.json(err);
+        });
+      } else {
+        res.status(400);
+        res.send('Email Already Exists');
+      }
+
     });
-  } else {
-    res.status(400);
-    res.send('Email not found');
-  };
-  });
+
   });
 
-
+  //--------------------------------------------------
 
   // Delete an example by id
-  app.delete("/api/examples/:id", function (req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
-      res.json(dbExample);
-    });
-  });
+  // app.delete("/api/examples/:id", function (req, res) {
+  //   db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
+  //     res.json(dbExample);
+  //   });
+  // });
 
-  app.get("/api/user_loans", function (req, res) {
-    console.log(req)
-    //how about 
-    db.Transactions.findAll({
-      where: {
-        lenderId: userData.id
-      }
-    });
-    //   .then(function(data){
-    //     console.log("KKKKK" +data.name)
-    //     res.json(data.name);
-    //   });
-    // });
-    app.get("/api/user_debts", function (req, res) {
-      console.log(req)
-      db.Transactions.findAll({
-        where: {
-          borrowerId: userData.id
-        }
-      });
-    })
-  }
-  )
+  // app.get("/api/user_loans", function (req, res) {
+  //   console.log(req)
+  //   db.Transactions.findAll({
+  //     where: {
+  //       lenderId: userData.id
+  //     }
+  //   });
+  //   //   .then(function(data){
+  //   //     console.log("KKKKK" +data.name)
+  //   //     res.json(data.name);
+  //   //   });
+  //   // });
+  //   app.get("/api/user_debts", function (req, res) {
+  //     console.log(req)
+  //     db.Transactions.findAll({
+  //       where: {
+  //         borrowerId: userData.id
+  //       }
+  //     });
+  //   })
+  // }
+  // )
 };
