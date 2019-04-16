@@ -2,7 +2,9 @@ var db = require("../models");
 var passport = require('passport');
 var nodemailer = require('nodemailer');
 var moment = require('moment');
-var currentDate = moment().format("L");
+ var currentDate= moment().format('L');
+//  console.log("DATE: " + currentDate);
+ 
 
 module.exports = function (app) {
   // Get all examples
@@ -67,7 +69,6 @@ module.exports = function (app) {
           email: req.user.email
         }
       }).then(function (data) {
-        console.log("KKKKK" + data.name)
         res.json(data);
       });
     }
