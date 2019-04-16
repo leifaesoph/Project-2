@@ -24,11 +24,11 @@
         </div>
         <div class="head-picuser">
             <div class="photo-usercont1">
-                
+
                 <div class="photo-usercont2">
                     <img src="./images/45500630.jpeg" class="idphotouser" style="width:200px;height:200px" alt=“…”>
-                    
-                    
+
+
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                     </div>
                 </div>
 
-                
+
 
 
                 <div class="notificationwrap">
@@ -72,26 +72,30 @@
                     <div class="moneyyougave">
                         <div class="moneyupdateyougave">
                             <div class="contfortitle">
-                                <div class="moneyyougivetitle"><p>U</p></div>
+                                <div class="moneyyougivetitle">
+                                    <p>U</p>
+                                </div>
                             </div>
-                                <div class="contforinputs">
+                            <div class="contforinputs">
                                 <div class="gaveInputs">
-                                        <span>SELECT * from (transactions) WHERE Lender_id = accountID</span>
-                                    </div>     
+                                    <span>SELECT * from (transactions) WHERE Lender_id = accountID</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="moneyyouowe">
                         <div class="moneyupdateyouowe">
-                                <div class="contfortitle">
-                                <div class="moneyyouowetitle"><p>O</p></div>
+                            <div class="contfortitle">
+                                <div class="moneyyouowetitle">
+                                    <p>O</p>
+                                </div>
                             </div>
-                                <div class="contforinputs">
-                            <div class="oweInputs">
-                                <span>SELECT * from (transactions) WHERE Borrower_id = accountID</span>
+                            <div class="contforinputs">
+                                <div class="oweInputs">
+                                    <span>SELECT * from (transactions) WHERE Borrower_id = accountID</span>
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>
@@ -122,37 +126,38 @@
                         <!-- ADDED POST -->
                             <form action="/api/sendTrans" method="POST">
                             <div class="lendersinputwrap">
-                                    <div class="form-group">
-                                        <p><label for="borrowersemail">Lend to</label></p>
-                                        <input type="email" name="borrowersemail" class="borrowersemail" id="borrowersemailid"
-                                            aria-describedby="emailHelp" placeholder="Borrower's Email">
-                                    </div>
-
-                                    <div class="form-group">
-                                            <p><label for="amount">Amount</label></p>
-                                            <input type="money" default="USD" name="amount" class="amounttogive" id="amounttogiveid"
-                                                placeholder="Enter Amount">
-                                        </div>
-                                        <div class="form-group">
-                                                <p><label for="datetopay">Due Date</label></p>
-                                                <input type="date" name="datetopay" class="datetopay" id="datetopayid"
-                                                    placeholder="Enter Due Date">
-                                            </div>
-                                            <div class="form-group">
-                                                    <p><label for="msg">Message</label></p>
-                                                    <input type="text" name="msg" class="msgtoborrower" id="msgtoborrowerid"
-                                                        placeholder="Send a message to the borrower!">
-                                                </div>
-
-                                                <div class="sendwrap">
-                                                        <div class="sendcont">
-                                                            <button id="sendbtnid" type="submit" class="btnsend">Send</button>
-                                                        </div>
-                                                    </div>
-
+                                <div class="form-group">
+                                    <p><label for="borrowersemail">Lend to</label></p>
+                                    <input type="email" name="borrowersemail" class="borrowersemail"
+                                        id="borrowersemailid" aria-describedby="emailHelp"
+                                        placeholder="Borrower's Email">
                                 </div>
-                                </form>
-                        </div>
+
+                                <div class="form-group">
+                                    <p><label for="amount">Amount</label></p>
+                                    <input type="money" default="USD" name="amount" class="amounttogive"
+                                        id="amounttogiveid" placeholder="Enter Amount">
+                                </div>
+                                <div class="form-group">
+                                    <p><label for="datetopay">Due Date</label></p>
+                                    <input type="date" name="datetopay" class="datetopay" id="datetopayid"
+                                        placeholder="Enter Due Date">
+                                </div>
+                                <div class="form-group">
+                                    <p><label for="msg">Message</label></p>
+                                    <input type="text" name="msg" class="msgtoborrower" id="msgtoborrowerid"
+                                        placeholder="Send a message to the borrower!">
+                                </div>
+
+                                <div class="sendwrap">
+                                    <div class="sendcont">
+                                        <button id="sendbtnid" type="submit" class="btnsend">Send</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
             </div>
