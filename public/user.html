@@ -179,6 +179,17 @@
           uploadPreset: 'pzuiyhku'}, (error, result) => { 
             if (!error && result && result.event === "success") { 
               console.log('Done! Here is the image info: ', result.info); 
+
+              if (result.event === "success") {
+                    let imageInfo = result.event.info;
+                    let publicId = imageInfo.public_id;
+                    let thumbnailUrl = imageInfo.thumbnail_url;
+                    let url = imageInfo.url;
+
+                    //send image info to our database
+                }
+
+
             }
           }
         )
