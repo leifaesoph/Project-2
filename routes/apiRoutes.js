@@ -2,7 +2,7 @@ var db = require("../models");
 var passport = require('passport');
 module.exports = function (app) {
   // Get all examples
-  app.get("/api/logout", function(req, res){
+  app.get("/api/logout", function (req, res) {
     console.log("TEST");
     res.json("/");
     // res.redirect("/");
@@ -18,22 +18,41 @@ module.exports = function (app) {
   // Create a new user
   app.post("/api/signup", function (req, res) {
     console.log(req.body);
-    db.Users.create(req.body).then(function (dbUsers) {
-      res.json("/users");
-    }).catch(function (err) {
-      console.log(err);
-      res.json(err);
+
+    //DMS UPDATED THIS MONDY PM-----------------------------------
+    db.Users.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(function (data) {
+      if (data === null) {
+
+        db.Users.create(req.body).then(function (dbUsers) {
+          res.json("/users");
+        }).catch(function (err) {
+          console.log(err);
+          res.json(err);
+        });
+      } else {
+        res.status(400);
+        res.send('Email Already Exists');
+      }
+
     });
+
   });
-// logout
-  app.get("/logout", function(req, res) { 
+//-----------------------------------------------------------------------
+
+
+  // logout
+  app.get("/logout", function (req, res) {
     console.log(req.user);
     req.logout();
     console.log(req.user)
     res.redirect("/");
   });
   //catch the user email
-  app.get("/api/user_data", function(req, res) {
+  app.get("/api/user_data", function (req, res) {
     console.log(req.user)
     if (!req.user) {
       // The user is not logged in, send back an empty object
@@ -43,11 +62,11 @@ module.exports = function (app) {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       db.Users.findOne({
-        where: {
+        where: {  
           email: req.user.email
         }
-      }).then(function(data){
-        console.log("KKKKK" +data.name)
+      }).then(function (data) {
+        console.log("KKKKK" + data.name)
         res.json(data.name);
       });
     }
@@ -57,7 +76,7 @@ module.exports = function (app) {
     console.log(req.body);
     db.Transactions.create(req.body).then(function (dbTransactions) {
       res.json("/users");
-      
+
     }).catch(function (err) {
       console.log(err);
       res.json(err);
