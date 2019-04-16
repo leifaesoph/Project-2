@@ -125,26 +125,55 @@ module.exports = function (app) {
   //   });
   // });
 
-  // app.get("/api/user_loans", function (req, res) {
+  app.get("/api/user_loans", function (req, res) {
+    console.log(req)
+    console.log(req.user);
+    db.Transactions.findAll({
+      where: {
+        lenderId: req.user.id
+      }
+    }).then(function (data) {
+      res.json(data)
+    });
+  });
+
+  app.get("/api/user_debts", function (req, res) {
+    console.log(req);
+    db.Transactions.findAll({
+      where: {
+        borrowerId: req.user.id
+      }
+    }).then(function (data) {
+      res.json(data)
+    });
+  });
+
+  // app.get("/api/new_debt_approve", function (req, res) {
   //   console.log(req)
   //   db.Transactions.findAll({
   //     where: {
-  //       lenderId: userData.id
+  //       [Op.or]: [{BorrowerId: user.id}, {BorrowerApproval: null}]
   //     }
-  //   });
-  //   //   .then(function(data){
-  //   //     console.log("KKKKK" +data.name)
-  //   //     res.json(data.name);
-  //   //   });
-  //   // });
-  //   app.get("/api/user_debts", function (req, res) {
-  //     console.log(req)
-  //     db.Transactions.findAll({
-  //       where: {
-  //         borrowerId: userData.id
-  //       }
-  //     });
+  //   })
+  // });
+
+  // app.put("/api/new_debt_confirm"), function (req, res) {
+  //   console.log(req)
+  //   db.Transaction.update({
+  //     where: {
+
+  //     }
   //   })
   // }
-  // )
+
+  // app.get("/api/new_payment_approve", function (req, res) {
+  //   console.log(req)
+  //   db.Transactions.findAll({
+  //     where: {
+  //       [Op.or]: [{lenderId: userData.id}, {PayDate: notNull}]
+  //     }
+  //   })
+  // });
+
+
 };

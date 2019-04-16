@@ -66,7 +66,7 @@
 
                 <div class="notificationwrap">
                     <div class="notificationcontain">
-                        Balance: $<span> [All Loans] - [All Debts]</span>
+                        Balance: $<span id="balanceDisplay"></span>
                     </div>
                 </div>
                 <div class="transactionswrap">
@@ -74,12 +74,12 @@
                         <div class="moneyupdateyougave">
                             <div class="contfortitle">
                                 <div class="moneyyougivetitle">
-                                    <p>U</p>
+                                    <p id="Up">U</p>
                                 </div>
                             </div>
                             <div class="contforinputs">
                                 <div class="gaveInputs">
-                                    <span>SELECT * from (transactions) WHERE Lender_id = accountID</span>
+                                    <span id="UDIV"></span>
                                 </div>
                             </div>
                         </div>
@@ -89,12 +89,12 @@
                         <div class="moneyupdateyouowe">
                             <div class="contfortitle">
                                 <div class="moneyyouowetitle">
-                                    <p>O</p>
+                                    <p id="Op">O</p>
                                 </div>
                             </div>
                             <div class="contforinputs">
                                 <div class="oweInputs">
-                                    <span>SELECT * from (transactions) WHERE Borrower_id = accountID</span>
+                                    <span id="ODIV"></span>
                                 </div>
                             </div>
                         </div>

@@ -20,8 +20,8 @@ app.use(express.static("public"));
 app.use(session({ 
   name: "sid",
   secret: "loan shark", 
-  resave: false, 
-  saveUninitialized: false,
+  resave: true, 
+  saveUninitialized: true,
   cookies: {
     maxAge: 1000 * 60 * 60 * 2,
     sameSite: true,
