@@ -16,7 +16,18 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // We need to use sessions to keep track of our user's login status
-app.use(session({ secret: "loan shark", resave: true, saveUninitialized: true }));
+// should console.log req.session to see if it's working.
+app.use(session({ 
+  name: sid,
+  secret: "loan shark", 
+  resave: false, 
+  saveUninitialized: false,
+  cookies: {
+    maxAge: 1000 * 60 * 60 * 2,
+    sameSite: true,
+    secure: process.env.NODE_ENV === "production"
+  }
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
