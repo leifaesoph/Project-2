@@ -4,7 +4,7 @@ var nodemailer = require('nodemailer');
 
 module.exports = function (app) {
   // Get all examples
-  app.get("/api/logout", function(req, res){
+  app.get("/api/logout", function (req, res) {
     console.log("TEST");
     res.json("/");
     // res.redirect("/");
@@ -27,15 +27,15 @@ module.exports = function (app) {
       res.json(err);
     });
   });
-// logout
-  app.get("/logout", function(req, res) { 
+  // logout
+  app.get("/logout", function (req, res) {
     console.log(req.user);
     req.logout();
     console.log(req.user)
     res.redirect("/");
   });
   //catch the user email
-  app.get("/api/user_data", function(req, res) {
+  app.get("/api/user_data", function (req, res) {
     console.log(req.user)
     if (!req.user) {
       // The user is not logged in, send back an empty object
@@ -48,9 +48,9 @@ module.exports = function (app) {
         where: {
           email: req.user.email
         }
-      }).then(function(data){
-        console.log("KKKKK" +data.name)
-        res.json(data.name);
+      }).then(function (data) {
+        console.log("KKKKK" + data.name)
+        res.json(data);
       });
     }
   });
@@ -61,6 +61,26 @@ module.exports = function (app) {
     });
   });
 
-  // Send test email via nodemailer
-
+  app.get("/api/user_loans", function (req, res) {
+    console.log(req)
+    db.Transactions.findAll({
+      where: {
+        lenderId: userData.id
+      }
+    });
+    //   .then(function(data){
+    //     console.log("KKKKK" +data.name)
+    //     res.json(data.name);
+    //   });
+    // });
+    app.get("/api/user_debts", function (req, res) {
+      console.log(req)
+      db.Transactions.findAll({
+        where: {
+          borrowerId: userData.id
+        }
+      });
+    })
+  }
+  )
 };

@@ -23,16 +23,14 @@ transporter.sendMail(mailOptions, function(error, info){
   }
 });
 
+
 var newTransaction =function(data) {
-    // senderName;
-    // borrowerEmail;
-    // amount;
-    // dueDate;
-    var mailOptions = {
+
+    mailOptions = {
         from: 'uoautomailer@gmail.com',
         to: req.body.email,
         subject: 'New Transaction request from' + userData.name,
-        text: 'That was easy!'
+        text: 'Dear' + req.body.name +", " + userData.name + " has logged that you owe " + req.body.amount + "."
       };
       
       transporter.sendMail(mailOptions, function(error, info){
