@@ -3,7 +3,7 @@ $(document).ready(function() {
     // and updates the HTML on the page
     $.get("/api/user_data").then(function(data) {
         console.log(data);
-      $(".user-name").text(data);
+      $(".user-name").text(data.name);
 
     });
     $.get("/api/user_loans").then(function(data) {

@@ -3,7 +3,7 @@ var express = require("express");
 var session = require("express-session");
 var exphbs = require("express-handlebars");
 var passport = require("./config/passport");
-var mailer = require("nodemailer.js");
+var mailer = require("nodemailer");
 
 var db = require("./models");
 
@@ -18,7 +18,7 @@ app.use(express.static("public"));
 // We need to use sessions to keep track of our user's login status
 // should console.log req.session to see if it's working.
 app.use(session({ 
-  name: sid,
+  name: "sid",
   secret: "loan shark", 
   resave: false, 
   saveUninitialized: false,
