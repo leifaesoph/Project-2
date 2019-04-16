@@ -1,5 +1,7 @@
 var db = require("../models");
 var passport = require('passport');
+var nodemailer = require('nodemailer');
+
 module.exports = function (app) {
   // Get all examples
   app.get("/api/logout", function (req, res) {
@@ -41,9 +43,6 @@ module.exports = function (app) {
     });
 
   });
-//-----------------------------------------------------------------------
-
-
   // logout
   app.get("/logout", function (req, res) {
     console.log(req.user);
@@ -67,7 +66,7 @@ module.exports = function (app) {
         }
       }).then(function (data) {
         console.log("KKKKK" + data.name)
-        res.json(data.name);
+        res.json(data);
       });
     }
   });
@@ -89,4 +88,27 @@ module.exports = function (app) {
       res.json(dbExample);
     });
   });
+
+  app.get("/api/user_loans", function (req, res) {
+    console.log(req)
+    db.Transactions.findAll({
+      where: {
+        lenderId: userData.id
+      }
+    });
+    //   .then(function(data){
+    //     console.log("KKKKK" +data.name)
+    //     res.json(data.name);
+    //   });
+    // });
+    app.get("/api/user_debts", function (req, res) {
+      console.log(req)
+      db.Transactions.findAll({
+        where: {
+          borrowerId: userData.id
+        }
+      });
+    })
+  }
+  )
 };
