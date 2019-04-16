@@ -10,7 +10,6 @@ passport.use(new LocalStrategy(
         usernameField: "email"
     },
     function (email, password, callBack) {
-        console.log(""+callBack);
         // When a user tries to sign in this code runs
         db.Users.findOne({
             where: {

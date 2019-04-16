@@ -15,12 +15,20 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
       validate: {
         isEmail: true
+      },
+      unique: {
+        args: true,
+        msg: 'Email adress already in use'
       }
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false
     },
+    photo: {
+      type: DataTypes.TEXT,
+      allowNull: true
+  },
     borrowerRating: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true

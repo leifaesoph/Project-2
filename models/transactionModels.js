@@ -12,6 +12,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.DATEONLY,
             allowNull: false
         },
+        message: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
         payDate: {
             type: DataTypes.DATEONLY,
             allowNull: true,
