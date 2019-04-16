@@ -2,7 +2,7 @@ var db = require("../models");
 var passport = require('passport');
 var nodemailer = require('nodemailer');
 var moment = require('moment');
- var currentDate= moment().format('L');
+ var currentDate= moment().format('"YYYY-MM-DD');
 //  console.log("DATE: " + currentDate);
  
 
@@ -86,15 +86,18 @@ module.exports = function (app) {
       }
     }).then(function (data) {
       if (data != null) {
-        console.log(data);
-        console.log(req.body);
+        console.log("BORROWERINF" +data);
+        // console.log(req.body);
 
         var transaction = {
+          borrowerName: data.name,
           borrowerId: data.id,
+          lenderName: req.body.lenderName,
           lenderId: req.body.lenderId,
           currentDate: currentDate,
           amount: req.body.amount,
-          dueDate: req.body.dueDate
+          dueDate: req.body.dueDate,
+          message: req.body.message
         }
 
         db.Transactions.create(transaction).then(function (transaction) {
