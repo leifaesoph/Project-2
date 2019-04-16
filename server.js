@@ -3,6 +3,7 @@ var express = require("express");
 var session = require("express-session");
 var exphbs = require("express-handlebars");
 var passport = require("./config/passport");
+var mailer = require("./nodemailer.js");
 
 var db = require("./models");
 
@@ -13,8 +14,20 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+
 // We need to use sessions to keep track of our user's login status
-app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+// should console.log req.session to see if it's working.
+app.use(session({ 
+  name: "sid",
+  secret: "loan shark", 
+  resave: false, 
+  saveUninitialized: false,
+  cookies: {
+    maxAge: 1000 * 60 * 60 * 2,
+    sameSite: true,
+    secure: process.env.NODE_ENV === "production"
+  }
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 

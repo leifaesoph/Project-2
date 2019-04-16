@@ -5,5 +5,13 @@ $(document).ready(function() {
         console.log(userData);
       $(".user-name").text(userData.name);
     });
+    $.get("/api/user_loans").then(function(data) {
+        console.log(data);
+      $(".UDIV").text(data);
+    });
+    $.get("/api/user_debts").then(function(data) {
+        console.log(data);
+      $(".ODIV").text(data);
+    });
   });
   

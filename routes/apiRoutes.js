@@ -1,5 +1,7 @@
 var db = require("../models");
 var passport = require('passport');
+var nodemailer = require('nodemailer');
+
 module.exports = function (app) {
     // Get all examples
     app.post("/api/login", passport.authenticate("local"), function (req, res) {
@@ -71,4 +73,60 @@ module.exports = function (app) {
             res.json(dbExample);
         });
     });
+  // logout
+  app.get("/logout", function (req, res) {
+    console.log(req.user);
+    req.logout();
+    console.log(req.user)
+    res.redirect("/");
+  });
+  //catch the user email
+  app.get("/api/user_data", function (req, res) {
+    console.log(req.user)
+    if (!req.user) {
+      // The user is not logged in, send back an empty object
+      res.json({});
+    }
+    else {
+      // Otherwise send back the user's email and id
+      // Sending back a password, even a hashed password, isn't a good idea
+      db.Users.findOne({
+        where: {
+          email: req.user.email
+        }
+      }).then(function (data) {
+        console.log("KKKKK" + data.name)
+        res.json(data);
+      });
+    }
+  });
+  // Delete an example by id
+  app.delete("/api/examples/:id", function (req, res) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
+      res.json(dbExample);
+    });
+  });
+
+  app.get("/api/user_loans", function (req, res) {
+    console.log(req)
+    db.Transactions.findAll({
+      where: {
+        lenderId: userData.id
+      }
+    });
+    //   .then(function(data){
+    //     console.log("KKKKK" +data.name)
+    //     res.json(data.name);
+    //   });
+    // });
+    app.get("/api/user_debts", function (req, res) {
+      console.log(req)
+      db.Transactions.findAll({
+        where: {
+          borrowerId: userData.id
+        }
+      });
+    })
+  }
+  )
 };
