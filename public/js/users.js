@@ -7,7 +7,7 @@ $(document).ready(function() {
     $.get("/api/user_data").then(function(data) {
         console.log(data);
         user=data;
-      $(".user-name").text(data.name);
+      $(".user-name").text(user.name);
       
       user = data;
 

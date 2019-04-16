@@ -21,6 +21,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: false
         },
+        lenderName: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         lenderId: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -29,6 +33,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             allowNull: true,
             default: null
+        },
+        borrowerName: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
         borrowerId: {
             type: DataTypes.INTEGER,
