@@ -1,6 +1,8 @@
 var db = require("../models");
 var passport = require('passport');
 var nodemailer = require('nodemailer');
+var moment = require('moment');
+var currentDate = moment().format("L");
 
 module.exports = function (app) {
   // Get all examples
@@ -20,12 +22,28 @@ module.exports = function (app) {
   // Create a new user
   app.post("/api/signup", function (req, res) {
     console.log(req.body);
-    db.Users.create(req.body).then(function (dbUsers) {
-      res.json("/users");
-    }).catch(function (err) {
-      console.log(err);
-      res.json(err);
+
+    //DMS UPDATED THIS MONDY PM-----------------------------------
+    db.Users.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(function (data) {
+      if (data === null) {
+
+        db.Users.create(req.body).then(function (dbUsers) {
+          res.json("/users");
+        }).catch(function (err) {
+          console.log(err);
+          res.json(err);
+        });
+      } else {
+        res.status(400);
+        res.send('Email Already Exists');
+      }
+
     });
+
   });
   // logout
   app.get("/logout", function (req, res) {
@@ -45,7 +63,7 @@ module.exports = function (app) {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       db.Users.findOne({
-        where: {
+        where: {  
           email: req.user.email
         }
       }).then(function (data) {
@@ -54,33 +72,75 @@ module.exports = function (app) {
       });
     }
   });
-  // Delete an example by id
-  app.delete("/api/examples/:id", function (req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
-      res.json(dbExample);
+
+
+    //DMS UPDATED THIS MONDY MN-----------------------------------
+
+  app.post("/api/sendTrans", function (req, res) {
+    console.log(req.body);
+
+    db.Users.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(function (data) {
+      if (data != null) {
+        console.log(data);
+        console.log(req.body);
+
+        var transaction = {
+          borrowerId: data.id,
+          lenderId: req.body.lenderId,
+          currentDate: currentDate,
+          amount: req.body.amount,
+          dueDate: req.body.dueDate
+        }
+
+        db.Transactions.create(transaction).then(function (transaction) {
+          
+          res.json("/users");
+        }).catch(function (err) {
+          console.log(err);
+          res.json(err);
+        });
+      } else {
+        res.status(400);
+        res.send('Email Already Exists');
+      }
+
     });
+
   });
 
-  app.get("/api/user_loans", function (req, res) {
-    console.log(req)
-    db.Transactions.findAll({
-      where: {
-        lenderId: userData.id
-      }
-    });
-    //   .then(function(data){
-    //     console.log("KKKKK" +data.name)
-    //     res.json(data.name);
-    //   });
-    // });
-    app.get("/api/user_debts", function (req, res) {
-      console.log(req)
-      db.Transactions.findAll({
-        where: {
-          borrowerId: userData.id
-        }
-      });
-    })
-  }
-  )
+  //--------------------------------------------------
+
+  // Delete an example by id
+  // app.delete("/api/examples/:id", function (req, res) {
+  //   db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
+  //     res.json(dbExample);
+  //   });
+  // });
+
+  // app.get("/api/user_loans", function (req, res) {
+  //   console.log(req)
+  //   db.Transactions.findAll({
+  //     where: {
+  //       lenderId: userData.id
+  //     }
+  //   });
+  //   //   .then(function(data){
+  //   //     console.log("KKKKK" +data.name)
+  //   //     res.json(data.name);
+  //   //   });
+  //   // });
+  //   app.get("/api/user_debts", function (req, res) {
+  //     console.log(req)
+  //     db.Transactions.findAll({
+  //       where: {
+  //         borrowerId: userData.id
+  //       }
+  //     });
+  //   })
+  // }
+  // )
 };
