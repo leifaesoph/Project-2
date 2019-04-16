@@ -122,26 +122,22 @@ module.exports = function (app) {
   //   });
   // });
 
-  // app.get("/api/user_loans", function (req, res) {
-  //   console.log(req)
-  //   db.Transactions.findAll({
-  //     where: {
-  //       lenderId: userData.id
-  //     }
-  //   });
-  //   //   .then(function(data){
-  //   //     console.log("KKKKK" +data.name)
-  //   //     res.json(data.name);
-  //   //   });
-  //   // });
-  //   app.get("/api/user_debts", function (req, res) {
-  //     console.log(req)
-  //     db.Transactions.findAll({
-  //       where: {
-  //         borrowerId: userData.id
-  //       }
-  //     });
-  //   })
-  // }
-  // )
+  app.get("/api/user_loans", function (req, res) {
+    console.log(req)
+    db.Transactions.findAll({
+      where: {
+        lenderId: userData.id
+      }
+    });
+
+    app.get("/api/user_debts", function (req, res) {
+      console.log(req)
+      db.Transactions.findAll({
+        where: {
+          borrowerId: userData.id
+        }
+      });
+    })
+  }
+  )
 };
