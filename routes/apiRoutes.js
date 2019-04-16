@@ -93,14 +93,10 @@ module.exports = function (app) {
     console.log(req)
     db.Transactions.findAll({
       where: {
-        lenderId: userData.id
+        lenderId: user.id
       }
     });
-    //   .then(function(data){
-    //     console.log("KKKKK" +data.name)
-    //     res.json(data.name);
-    //   });
-    // });
+
     app.get("/api/user_debts", function (req, res) {
       console.log(req)
       db.Transactions.findAll({

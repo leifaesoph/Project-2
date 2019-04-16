@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Gao9851046!",
+    "password": "password",
     "database": "uo_DB",
     "host": "localhost",
     "dialect": "mysql"
