@@ -13,7 +13,10 @@ $(document).ready(function() {
         user=data;
       $(".user-name").text(user.name);
     });
+
+    
     $.get("/api/approve").then(function(data){
+
       $('#title').html("Please approve the new transaction ");
             $("#message").html("Sended By " + data.lenderName 
             +"\n"+"Amount: "+ data.amount
@@ -27,6 +30,8 @@ $(document).ready(function() {
         $('#modal').modal('show');
       });
     });
+
+
 
     $.get("/api/user_loans").then(function(data
       

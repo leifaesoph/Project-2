@@ -10,6 +10,7 @@ body{
   font-family: 'Lato', sans-serif;
   overflow: auto;
   background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgb(198, 179, 243))) fixed;
+  position: relative;
 }
 
 
@@ -675,8 +676,9 @@ h2 {
 
 .logoutbtn {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-right: 20px;
+  margin-left: 20px;
   margin-top: 20px;
 }
 /* 
