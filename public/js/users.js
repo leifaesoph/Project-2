@@ -21,12 +21,21 @@ $(document).ready(function() {
         for(var i = 0; i < data.length; i++) {
           loanTransactionNumber++;
           totalMoneyLent += parseFloat(data[i].amount);
+          var newDiv = $("<div>");
+          newDiv.attr("class", "loanReminddiv")
+          $("#UDIV").append(newDiv);
+
           var newBtn=$("<button>");
-          $("#UDIV").append(newBtn);
+          newDiv.append(newBtn);
           newBtn.attr("class", "loanReminder");
           newBtn.attr("value", data[i].borrowerName);
           newBtn.text(data[i].borrowerName + " | " + data[i].dueDate + " | " + data[i].amount); 
+
+          newBtn.click(function(){
+            $("#overlay-rem").show(500);
+          });
         };
+
         $("#Up").prepend("Loans: " + loanTransactionNumber + " | ");
         $("#Up").prepend("Total: $" + totalMoneyLent + " | ");
     });
@@ -36,17 +45,32 @@ $(document).ready(function() {
         for(var i = 0; i < data.length; i++) {
           debtTransactionNumber++;
           totalMoneyBorrowed += parseFloat(data[i].amount);
-          var newBtn=$("<button>");
-          $("#ODIV").append(newBtn);
-          newBtn.attr("class", "debtReminder");
-          newBtn.attr("value", data[i].lenderName);
-          newBtn.text(data[i].lenderName + " | " + data[i].dueDate + " | " + data[i].amount); 
+
+          var newDiv2 = $("<div>");
+          newDiv2.attr("class", "paybtndiv")
+          $("#ODIV").append(newDiv2)
+
+          var newBtn2=$("<button>");
+          newDiv2.append(newBtn2);
+
+
+          newBtn2.attr("class", "debtReminder");
+          
+          newBtn2.attr("value", data[i].lenderName);
+          newBtn2.text(data[i].lenderName + " | " + data[i].dueDate + " | " + data[i].amount); 
+
+          newBtn2.click(function(){
+            $("#overlay-pay").show(500);
+          });
         };
         $("#Op").append("Debts: " + debtTransactionNumber + " | ");
         $("#Op").append("Total: $" + totalMoneyBorrowed + " | ");
         $("#balanceDisplay").text(totalMoneyLent - totalMoneyBorrowed);
     });
 
+
+
   });
 
+ 
   
