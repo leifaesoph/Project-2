@@ -7,16 +7,12 @@
     <!-- Latest compiled and minified CSS & JS -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
     <link rel="stylesheet" href="./styles/styles.css" media="screen" title="no title">
-    <script src="https://code.jquery.com/jquery.js"></script>
-
 
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
-
 
 </head>
 
 <body>
-
 
     <div class="usercont1">
         <div class="logoutbtn">
@@ -26,7 +22,8 @@
             <div class="photo-usercont1">
 
                 <div class="photo-usercont2">
-                    <img src="./images/45500630.jpeg" class="idphotouser" style="width:200px;height:200px" alt=“…” id= "userphoto">
+                    <img src="./images/45500630.jpeg" class="idphotouser" style="width:200px;height:200px" alt=“…”
+                        id="userphoto">
 
 
                 </div>
@@ -34,7 +31,7 @@
         </div>
         <div class="contentswrapper">
             <div class="contents">
-                <div class="addphotowrap" style="display:none;">
+                <div class="addphotowrap" style="display:none">
 
                     <div class="addphotocontain">
 
@@ -61,8 +58,12 @@
                     </div>
                 </div>
 
-
-
+                <div class="addtranswrap">
+                    <div class="addtranscont">
+                        <button id="btnaddtransid" type="submit" class="btnaddtrans">Add Transaction</button>
+                    </div>
+                </div>
+                <br>
 
                 <div class="notificationwrap">
                     <div class="notificationcontain">
@@ -74,12 +75,13 @@
                         <div class="moneyupdateyougave">
                             <div class="contfortitle">
                                 <div class="moneyyougivetitle">
-                                    <p id="Up">U</p>
+                                    <div>U</div>
+                                    <p id="Up"></p>
                                 </div>
                             </div>
                             <div class="contforinputs">
                                 <div class="gaveInputs">
-                                    <span id="UDIV"></span>
+                                    <div id="UDIV"></div>
                                 </div>
                             </div>
                         </div>
@@ -89,22 +91,19 @@
                         <div class="moneyupdateyouowe">
                             <div class="contfortitle">
                                 <div class="moneyyouowetitle">
-                                    <p id="Op">O</p>
+                                    <div>O</div>
+                                    <p id="Op"></p>
                                 </div>
                             </div>
                             <div class="contforinputs">
                                 <div class="oweInputs">
-                                    <span id="ODIV"></span>
+                                    <div id="ODIV"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="addtranswrap">
-                    <div class="addtranscont">
-                        <button id="btnaddtransid" type="submit" class="btnaddtrans">Add Transaction</button>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
@@ -162,20 +161,111 @@
                 </div>
 
             </div>
-
-
-
-
         </div>
         <div class="footer2">
             <p class="pfooter">Back</p>
         </div>
     </div>
 
+    <!-- REMINDER MODAL -->
+
+    <div id="overlay-rem" style="display:none">
+
+        <div class="remindercont1">
+
+            <div class="remindercont2">
+
+                <div>
+                    <div>
+                        REMINDER
+                    </div>
+                </div>
+                <form action="">
+                    <div class="remindermodalwrap">
+
+                        <div class="form-group3">
+                            <p><label for="datenotify">Reminder Date</label></p>
+                            <input type="date" name="datenotify" class="datenotifyclass inputrem" id="datenotifyid"
+                                placeholder="Enter Reminder Date">
+                        </div>
+
+                        <div class="form-group3">
+                            <p><label for="borrowersemail">Remind this Email</label></p>
+                            <input type="email" name="borrowersemail" class="borrowersemailreminder inputrem"
+                                id="borrowersemailid" aria-describedby="emailHelp" placeholder="Borrower's Email">
+                        </div>
+
+                        <div class="form-group3">
+                            <p><label for="remmsg">Message</label></p>
+                            <input type="text" name="remmsg" class="remmsgtoborrower inputrem" id="remmsgtoborrowerid"
+                                placeholder="Send a message to the borrower!">
+                        </div>
+                    </div>
+                </form>
+                <div class="sendwrap">
+                    <div class="remcont">
+                        <button id="rembtnid" type="submit" class="btnrem">Set Reminder</button>
+                        <button id="closebtnid" type="submit" class="btnrem">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 
+    <!-- ------------------------------------------------ -->
+
+    <!-- PAY MODAL -->
+
+    <div id="overlay-pay" style="display:none">
+
+        <div class="paycont1">
+
+            <div class="paycont2">
+
+                <div>
+                    <div>
+                        PAY
+                    </div>
+                </div>
+                <form action="">
+                    <div class="paymodalwrap">
+
+                        <div class="form-group4">
+                            <p><label for="datepay">Pay Date</label></p>
+                            <input type="date" name="datepay" class="datepayclass inputpaymodal" id="datenotifyid"
+                                placeholder="Enter Reminder Date">
+                        </div>
+
+                        <div class="form-group4">
+                            <p><label for="lendersemail">Notify this Email</label></p>
+                            <input type="email" name="lendersemail" class="lendersemailpay inputpaymodal"
+                                id="borrowersemailid" aria-describedby="emailHelp" placeholder="Borrower's Email">
+                        </div>
+
+                        <div class="form-group4">
+                            <p><label for="paymsg">Message</label></p>
+                            <input type="text" name="paymsg" class="paytolender inputpaymodal" id="remmsgtoborrowerid"
+                                placeholder="Send a message to the borrower!">
+                        </div>
+                    </div>
+                </form>
+                <div class="sendwrap">
+                    <div class="paycont3">
+                        <button id="rembtnid" type="submit" class="btnpaymodal">Pay</button>
+                        <button id="closebtnid2" type="submit" class="btnpaymodal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- ------------------------------------------------ -->
     <script type="text/javascript">
-    var userImage;
+        var userImage;
         var myWidget = cloudinary.createUploadWidget({
             cloudName: 'dushe8phr',
             uploadPreset: 'pzuiyhku'
@@ -203,7 +293,10 @@
         document.getElementById("upload_widget").addEventListener("click", function () {
             myWidget.open();
         }, false);
+
     </script>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
     <script src="./js/index.js" type="text/javascript"></script>
     <script src="js/users.js" type="text/javascript"></script>
