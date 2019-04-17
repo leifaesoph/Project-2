@@ -5,12 +5,12 @@ $(document).ready(function() {
     var moneyInput = $("input#amounttogiveid");
     var dateInput = $("input#datetopayid");
     var msgInput = $("input#msgtoborrowerid");
-
+    var transData;
     //-----------------------
 
 $("#sendbtnid").on("click", function(event) {
       event.preventDefault();
-      var transData = {
+      transData = {
         lenderName:user.name,
         lenderId: user.id,
         email: emailInput.val().trim(),
@@ -19,8 +19,7 @@ $("#sendbtnid").on("click", function(event) {
         message: msgInput.val().trim()
         // text: textInput.val().trim()
       };
-      console.log(transData)
-
+      console.log(transData);
       
       $.post("/api/sendTrans", transData).then(function(data){
 

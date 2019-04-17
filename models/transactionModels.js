@@ -17,6 +17,13 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true,
             default: null
         },
+        borrowerEmail: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+              isEmail: true
+            }
+          },
         message: {
             type: DataTypes.TEXT,
             allowNull: false
