@@ -207,5 +207,20 @@ module.exports = function (app) {
       console.log(err);
       res.json(err);
     });
-    })
+    });
+    app.get("/api/approve", function (req, res) {
+      db.Transactions.findOne({
+        where: {
+           borrowerEmail: req.user.email ,
+           borrowerApproval: null 
+        }
+      }).then(function (data) {
+          if (data != null) {
+            res.json(data)
+        }
+      }).catch(function (err) {
+        console.log(err);
+        res.json(err);
+      });
+    });
 };

@@ -3,6 +3,7 @@ var loanTransactionNumber = 0;
 var totalMoneyLent = 0;
 var debtTransactionNumber = 0;
 var totalMoneyBorrowed = 0;
+var transactionId;
 
 $(document).ready(function() {
     // This file just does a GET request to figure out which user is logged in
@@ -25,6 +26,7 @@ $(document).ready(function() {
 
       $("#reject").val(data.id);
       $("#accept").val(data.id);
+      transactionId=$("#paybtnid").val(data.id);
       $("#modalOpen").on("click", function(event){
         event.preventDefault();
         $('#modal').modal('show');
