@@ -28,7 +28,7 @@ $(document).ready(function() {
           var newBtn=$("<button>");
           newDiv.append(newBtn);
           newBtn.attr("class", "loanReminder");
-          newBtn.attr("value", data[i].borrowerName);
+          newBtn.attr("value", data[i].id);
           newBtn.text(data[i].borrowerName + " | " + data[i].dueDate + " | " + data[i].amount); 
 
           newBtn.click(function(){
@@ -56,7 +56,7 @@ $(document).ready(function() {
 
           newBtn2.attr("class", "debtReminder");
           
-          newBtn2.attr("value", data[i].lenderName);
+          newBtn2.attr("value", data[i].id);
           newBtn2.text(data[i].lenderName + " | " + data[i].dueDate + " | " + data[i].amount); 
 
           newBtn2.click(function(){
