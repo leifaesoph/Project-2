@@ -12,11 +12,25 @@ $(document).ready(function() {
         console.log(data);
         user=data;
       $(".user-name").text(user.name);
-      
-      user = data;
-
     });
-    $.get("/api/user_loans").then(function(data) {
+    $.get("/api/approve").then(function(data){
+      $('#title').html("Please approve the new transaction ");
+            $("#message").html("Sended By " + data.lenderName 
+            +"\n"+"Amount: "+ data.amount
+            +"\n"+"dueDate: "+ data.dueDate
+            +"\n"+"message: "+ data.message);
+
+      $("#reject").val(data.id);
+      $("#accept").val(data.id);
+      $("#modalOpen").on("click", function(event){
+        event.preventDefault();
+        $('#modal').modal('show');
+      });
+    });
+
+    $.get("/api/user_loans").then(function(data
+      
+      ) {
         console.log(data[0].borrowerName, data[0].dueDate, data[0].amount);
         for(var i = 0; i < data.length; i++) {
           loanTransactionNumber++;
