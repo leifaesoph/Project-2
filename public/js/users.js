@@ -32,7 +32,11 @@ $(document).ready(function() {
         $('#modal').modal('show');
       });
     });
-
+ $.ajax({
+   url:"/api/payNotification",
+   method: "GET",
+   data: {id: transactionId}
+ })
 
 
     $.get("/api/user_loans").then(function(data
