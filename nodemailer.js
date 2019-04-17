@@ -29,8 +29,8 @@ var newTransaction =function(data) {
     mailOptions = {
         from: 'uoautomailer@gmail.com',
         to: req.body.email,
-        subject: 'New Transaction request from' + userData.name,
-        text: 'Dear' + req.body.name +", " + userData.name + " has logged that you owe " + req.body.amount + "."
+        subject: 'New Transaction request from' + user.name,
+        text: 'Dear ' + req.body.name +", " + user.name + " has logged that you owe " + req.body.amount + "."
       };
       
       transporter.sendMail(mailOptions, function(error, info){
@@ -41,5 +41,14 @@ var newTransaction =function(data) {
         }
       });
 };
+
+var reminderMailer = function(data) {
+  
+    mailOptions = {
+      to: req.body.email,
+      subject: 'Reminder mailer from' + user.name,
+      text: 'Dear ' + req.body.name + ', this is a friendly reminder from ' + user.name + ''
+    }
+}
 
 module.exports = newTransaction;
