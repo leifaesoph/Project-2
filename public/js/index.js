@@ -137,7 +137,12 @@ $("#closebtnid2").click(function(){
   $("#overlay-pay").fadeOut(500);
 });
 
+$("#closebtnid2").click(function(){
+  $("#overlay-pay").fadeOut(500);
+});
 
-// $(".loanReminder").mouseover(function() {
-//   $(this).css("background-color","red")
-// });
+$("#modalOpen").click(function(){
+  // $(".signup").fadeIn(1000);
+  $(".notificationdiv").toggle("slide");
+  
+});

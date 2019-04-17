@@ -17,7 +17,41 @@
 
     <div class="usercont1">
         <div class="logoutbtn">
-            <button type="submit" id="logout" class="btnaddtrans">Log Out</button>
+            
+
+            <!-- ----------------------------------------- -->
+            <div class="notificationwrapper">
+            <button type="button" id ="modalOpen" class="notificationbtn1" data-toggle="modal" data-target="#exampleModal">
+                NOTIFICATION
+               </button>
+         
+               <div class="notificationdiv" style="display:none">
+               <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                 <div class="modal-dialog" role="document">
+                   <div class="modal-content">
+                     <div class="modal-header">
+                       <h5 class="modal-title" id="title"></h5>
+                       
+                     </div>
+                     <div class="modal-body">
+                         <h5 class="h3 ml-5 mb-3"id="message"></h5>
+                     </div>
+                     <div class="modal-footer">
+                       <button type="button" id ="reject" class="btn btn-secondary needApprove" value= "" data-dismiss="modal">Reject</button>
+                       <button type="button" id="accept" class="btn btn-primary needApprove" value="" data-dismiss="modal">Accept</button>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+         
+             </div>
+            </div>
+
+             <!-- ----------------------------- -->
+
+
+             <button type="submit" id="logout" class="btnaddtrans">Log Out</button>
+
         </div>
         <div class="head-picuser">
             <div class="photo-usercont1">
@@ -213,29 +247,7 @@
         </div>
 
     </div>
-  
-    <button type="button" id ="modalOpen" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-       New transaction
-      </button>
-      
-   
-      <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="title"></h5>
-              
-            </div>
-            <div class="modal-body">
-                <h5 class="h3 ml-5 mb-3"id="message"></h5>
-            </div>
-            <div class="modal-footer">
-              <button type="button" id ="reject" class="btn btn-secondary needApprove" value= "" data-dismiss="modal">Reject</button>
-              <button type="button" id="accept" class="btn btn-primary needApprove" value="" data-dismiss="modal">Accept</button>
-            </div>
-          </div>
-        </div>
-      </div>
+ 
 
     <!-- ------------------------------------------------ -->
 
