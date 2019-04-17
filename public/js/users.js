@@ -14,7 +14,7 @@ $(document).ready(function() {
       $(".user-name").text(user.name);
     });
 
-    
+
     $.get("/api/approve").then(function(data){
 
       $('#title').html("Please approve the new transaction ");

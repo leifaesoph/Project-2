@@ -13,6 +13,17 @@ body{
   position: relative;
 }
 
+.modal:focus {
+  outline: none !important;
+  }
+
+  .modal-content:focus {
+    outline: none !important;
+    }
+
+.notificationbtn1 {
+
+}
 
 /* DMS MON PM----------------------- */
 .loginsignuplinkwrap {
