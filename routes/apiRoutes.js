@@ -2,9 +2,9 @@ var db = require("../models");
 var passport = require('passport');
 var transporter = require('../nodemailer/');
 var moment = require('moment');
- var currentDate= moment().format('"YYYY-MM-DD');
+var currentDate = moment().format('"YYYY-MM-DD');
 //  console.log("DATE: " + currentDate);
- 
+
 
 module.exports = function (app) {
   // Get all examples
@@ -65,7 +65,7 @@ module.exports = function (app) {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       db.Users.findOne({
-        where: {  
+        where: {
           email: req.user.email
         }
       }).then(function (data) {
@@ -75,7 +75,7 @@ module.exports = function (app) {
   });
 
 
-    //DMS UPDATED THIS MONDY MN-----------------------------------
+  //DMS UPDATED THIS MONDY MN-----------------------------------
 
   app.post("/api/sendTrans", function (req, res) {
     console.log(req.body);
@@ -86,10 +86,11 @@ module.exports = function (app) {
       }
     }).then(function (data) {
       if (data != null) {
-        console.log("BORROWERINF" +data);
+        console.log("BORROWERINF" + data);
         // console.log(req.body);
 
         var transaction = {
+          borrowerEmail: data.email,
           borrowerName: data.name,
           borrowerId: data.id,
           lenderName: req.body.lenderName,
@@ -116,7 +117,7 @@ module.exports = function (app) {
         });
 
         db.Transactions.create(transaction).then(function (transaction) {
-          
+
           res.json("/users");
         }).catch(function (err) {
           console.log(err);
@@ -146,7 +147,8 @@ module.exports = function (app) {
     console.log(req.user);
     db.Transactions.findAll({
       where: {
-        lenderId: req.user.id
+        lenderId: req.user.id,
+        borrowerApproval: true 
       }
     }).then(function (data) {
       res.json(data)
@@ -157,39 +159,53 @@ module.exports = function (app) {
     console.log(req);
     db.Transactions.findAll({
       where: {
-        borrowerId: req.user.id
+        borrowerId: req.user.id,
+        borrowerApproval: true
       }
     }).then(function (data) {
       res.json(data)
     });
   });
-
-  // app.get("/api/new_debt_approve", function (req, res) {
-  //   console.log(req)
-  //   db.Transactions.findAll({
-  //     where: {
-  //       [Op.or]: [{BorrowerId: user.id}, {BorrowerApproval: null}]
-  //     }
-  //   })
-  // });
-
-  // app.put("/api/new_debt_confirm"), function (req, res) {
-  //   console.log(req)
-  //   db.Transaction.update({
-  //     where: {
-
-  //     }
-  //   })
-  // }
-
-  // app.get("/api/new_payment_approve", function (req, res) {
-  //   console.log(req)
-  //   db.Transactions.findAll({
-  //     where: {
-  //       [Op.or]: [{lenderId: userData.id}, {PayDate: notNull}]
-  //     }
-  //   })
-  // });
-
-
+  app.get("/api/approve", function (req, res) {
+    db.Transactions.findOne({
+      where: {
+         borrowerEmail: req.user.email ,
+         borrowerApproval: null 
+      }
+    }).then(function (data) {
+        if (data != null) {
+          res.json(data)
+      }
+    }).catch(function (err) {
+      console.log(err);
+      res.json(err);
+    });
+  });
+  app.delete("/api/deleteTrans/:id", function (req, res) {
+    // console.log("IDhere");
+    console.log("ID" + req.params.id);
+    db.Transactions.destroy({
+      where: {id:req.params.id}
+      }).then(function (data) {
+        console.log("END");
+        if(data!==null) {
+      res.json(data);
+        };
+    }).catch(function (err) {
+      console.log(err);
+      res.json(err);
+    });
+  });
+  app.put("/api/update", function(req, res) {
+    console.log(req.body);
+    db.Transactions.update(
+      {borrowerApproval:true}, 
+      {where: {id:req.body.id}}
+    ).then((data)=>
+      res.json(data)
+    ).catch(function (err) {
+      console.log(err);
+      res.json(err);
+    });
+    })
 };

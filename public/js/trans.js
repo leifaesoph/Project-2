@@ -20,7 +20,6 @@ $("#sendbtnid").on("click", function(event) {
         // text: textInput.val().trim()
       };
       console.log(transData);
-
       
       $.post("/api/sendTrans", transData).then(function(data){
 
