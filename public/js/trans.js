@@ -11,7 +11,7 @@ $(document).ready(function() {
 $("#sendbtnid").on("click", function(event) {
       event.preventDefault();
       var transData = {
-        lenderName:user.name,
+        lenderName: user.name,
         lenderId: user.id,
         email: emailInput.val().trim(),
         amount: moneyInput.val().trim(),
@@ -19,7 +19,7 @@ $("#sendbtnid").on("click", function(event) {
         message: msgInput.val().trim()
         // text: textInput.val().trim()
       };
-      console.log(transData)
+      console.log(transData);
 
       
       $.post("/api/sendTrans", transData).then(function(data){
@@ -30,7 +30,9 @@ $("#sendbtnid").on("click", function(event) {
           // $('.errormessage').fadeIn(500).fadeOut(1000); 
           // $("").append("error");
           alert("hey");
-        })
+        });
+
+        newTransaction(transData);
     });
 
   });

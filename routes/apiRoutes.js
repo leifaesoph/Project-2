@@ -1,6 +1,6 @@
 var db = require("../models");
 var passport = require('passport');
-var nodemailer = require('nodemailer');
+var transporter = require('../nodemailer/');
 var moment = require('moment');
  var currentDate= moment().format('"YYYY-MM-DD');
 //  console.log("DATE: " + currentDate);
@@ -100,6 +100,21 @@ module.exports = function (app) {
           message: req.body.message
         }
 
+        var mailOptions = {
+          from: "uoautomailer@gmail.com",
+          to: "uoautomailer@gmail.com",
+          subject: "New Transaction Logged by " + req.body.lenderName,
+          text: "Hey, " + data.name + ". A new Transaction has been logged by " + req.body.lenderName + " for $" + req.body.amount + ". "
+          + req.body.lenderName + " has set a due date of " + req.body.dueDate + ". Please login to UO to confirm this transaction. Thank you, UO." 
+        };
+        transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Email sent: ' + info.response);
+          }
+        });
+
         db.Transactions.create(transaction).then(function (transaction) {
           
           res.json("/users");
@@ -107,6 +122,7 @@ module.exports = function (app) {
           console.log(err);
           res.json(err);
         });
+
       } else {
         res.status(400);
         res.send('Email Already Exists');
