@@ -9,7 +9,7 @@ body{
 	box-sizing: border-box;
   font-family: 'Lato', sans-serif;
   overflow: auto;
-  /* background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgba(77, 19, 209, 1))) fixed; */
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgb(198, 179, 243))) fixed;
 }
 
 
@@ -270,6 +270,7 @@ p {
       color: black;
       border-radius: 5px;
       text-align: center;
+      font-size: 15px;
   }
 
   .formcontrol:focus {
@@ -287,6 +288,7 @@ p {
     color: black;
     border-radius: 50px;
     text-align: center;
+    font-size: 15px;
 }
 
 .formcontrol1:focus {
@@ -424,7 +426,6 @@ width: 70%;
   height: 40px;
   text-align: center;
   background-color: transparent;
-  padding-top: 10px;
   /* border-radius: 5px; */
   /* border-bottom-style: solid;
   border-width: 1px;
@@ -434,23 +435,16 @@ width: 70%;
 
 
 }
-.contforinputs {
-  justify-content: center;
-  display: flex;
-}
+/* .contforinputs {
+  
+} */
 
 .contfortitle {
   justify-content: center;
   display: flex;
 }
 
-.gaveInputs {
-  text-align: center;
-}
 
-.oweInputs {
-  text-align: center;
-}
 
 .addphotowrap {
   /* justify-content: center;
@@ -469,29 +463,32 @@ flex-direction: row;
   width: 50%;
   justify-content: center;
   display: flex;
-  height: 200px;
+  height: 100%;
   border-left-style: none;
   border-right-style: solid;
   border-width: 1px;
   border-color: rgba(142, 68, 173, 0.5);
   color: black;
+  
 }
+
 .moneyupdateyougave {
   width: 100%;
-  
-  height: 200px;
+  justify-content: center;
+ 
   /* background: rgba(102, 51, 153, .3); */
+
+
   overflow: auto;
   /* border-radius: 20px; */
   color: black;
-  
 
 }
+
 .moneyupdateyouowe {
   width: 100%;
-
-  height: 200px;
-  /* background: rgba(102, 51, 153, .3); */
+/* 
+  background: rgba(102, 51, 153, .3); */
   overflow: auto;
 
   /* border-radius: 20px; */
@@ -508,6 +505,8 @@ flex-direction: row;
   border-width: 1px;
   border-color: rgba(142, 68, 173, 0.5); */
   color: black;
+  
+  height: 100%;
 
 }
 
@@ -515,31 +514,103 @@ flex-direction: row;
 
 border-radius: 5px;
 text-align: center;
-height: 30px;
-display: flex;
-justify-content: center;
+height: 50px;
+/* display: flex;
+justify-content: center; */
 
   padding-bottom: 15px;
   padding-top: 5px;
   padding-left: 15px;
   padding-right: 15px;
   width: 70%;
-  background-color: rgba(224, 83, 125, 0.5);
+  background-color: rgba(218, 114, 145, 0.5);
+
+  /* justify-content: space-between;
+  display: flex; */
 }
 
 .moneyyougivetitle {
   border-radius: 5px;
   text-align: center;
-  height: 30px;
+  height: 50px;
+  /* justify-content: space-between;
+  display: flex; */
   
     padding-bottom: 15px;
     padding-top: 5px;
     padding-left: 15px;
     padding-right: 15px;
     width: 70%;
-    background-color: rgba(90, 185, 230, 0.5);
+    background-color: rgba(133, 204, 236, 0.5);
+  }
+  .gaveInputs {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    overflow: auto;
+    width: 100%;
   }
 
+  #UDIV {
+
+    width: 60%;
+  }
+
+  #ODIV {
+    width:60%;
+  
+  }
+  
+   
+  .oweInputs {
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    overflow: auto;
+  }
+  
+
+  .loanReminder {
+    margin-top: 20px;
+    height: 30px;
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: rgb(8, 8, 8, 0.2);
+    font-size: 12px;
+
+    
+  }
+
+  .loanReminder:hover {
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2); 
+    background-color: rgba(104, 223, 80, 0.4);
+
+    }
+
+  .debtReminder {
+    margin-top: 20px;
+    height: 30px;
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: rgba(241, 134, 72, 0.4);
+    font-size: 12px;
+  }
+
+  .debtReminder:hover {
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2); 
+    
+    background-color: rgb(245, 9, 9, 0.4);
+    }
 
 .addtransnwrap {
   justify-content: center;
@@ -552,13 +623,29 @@ justify-content: center;
   margin-top: 20px;
 }
 
-.btnaddtrans {
+
+#logout {
   background-color: transparent;
   width: 80px;
+  height: 30px;
+  border-style: solid;
+  border-width: 1px;
+font-size: 12px;
+  outline: none !important;
+  color:  rgba(142, 68, 173, 0.8);
+  border-radius: 50px;
+  text-align: center;
+  margin-top: 0px;
+  background:transparent;
+  box-shadow: 5px 2px rgba(142, 68, 173, 0.5);
+}
+#btnaddtransid {
+  background-color: transparent;
+  width: 120px;
   height: 40px;
   border-style: solid;
   border-width: 1px;
-
+font-size: 12px;
   outline: none !important;
   color: white;
   border-radius: 50px;
@@ -590,6 +677,8 @@ h2 {
 .logoutbtn {
   display: flex;
   justify-content: flex-end;
+  margin-right: 20px;
+  margin-top: 20px;
 }
 /* 
 .cloudinarybtn {
@@ -598,9 +687,201 @@ h2 {
 
 
 
+/*MODAL2---------------------------*/
 
+.remindercont1 {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  margin-top: 180px;
+}
+
+.remindermodalwrap {
+  width: 100%;
+}
+
+.remindercont2 {
+  width: 60%;
+  background:transparent;
+  border-color: white;
+  padding: 20px;
+  border-style: solid;
+  border-width: 1px;
+  color: white;
+}
+
+.remcont {
+  justify-content: space-between;
+  display: flex;
+  margin: 20px;
+  width: 100%;
+   
+}
+
+
+
+.btnrem {
+  background-color: transparent;
+  width: 80px;
+  height: 40px;
+  border-style: solid;
+  border-width: 1px;
+
+  outline: none !important;
+  color: white;
+  border-radius: 50px;
+  text-align: center;
+  margin-top: 0px;
+  background:rgba(142, 68, 173, .8);
+  box-shadow: 5px 2px rgba(142, 68, 173, 0.5);
+}
+.btnrem:hover {
+-ms-transform: scale(1.2); /* IE 9 */
+-webkit-transform: scale(1.2); /* Safari 3-8 */
+transform: scale(1.2); 
+}
+
+.form-group3 {
+  width: 100%;
+}
+.inputrem{
+  background-color: rgba(59, 57, 59, 0.8);
+  width: 100%;
+  height: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-color:white;
+  outline: none !important;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+}
+
+.inputrem:focus {
+outline: none !important;
+}
+
+.inputrem::placeholder {
+  color:gray;
+}
+/* --------------------------------------------- */
+ 
+
+
+/*MODAL3---------------------------*/
+
+.paycont1 {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  margin-top: 180px;
+}
+
+.paymodalwrap {
+  width: 100%;
+}
+
+.paycont2 {
+  width: 60%;
+  background:transparent;
+  border-color: white;
+  padding: 20px;
+  border-style: solid;
+  border-width: 1px;
+  color: white;
+}
+
+.paycont3 {
+  justify-content: space-between;
+  display: flex;
+  margin: 20px;
+  width: 100%;
+   
+}
+
+
+
+.btnpaymodal {
+  background-color: transparent;
+  width: 80px;
+  height: 40px;
+  border-style: solid;
+  border-width: 1px;
+
+  outline: none !important;
+  color: white;
+  border-radius: 50px;
+  text-align: center;
+  margin-top: 0px;
+  background:rgba(142, 68, 173, .8);
+  box-shadow: 5px 2px rgba(142, 68, 173, 0.5);
+}
+.btnpaymodal:hover {
+-ms-transform: scale(1.2); /* IE 9 */
+-webkit-transform: scale(1.2); /* Safari 3-8 */
+transform: scale(1.2); 
+}
+
+.form-group4 {
+  width: 100%;
+}
+.inputpaymodal{
+  background-color: rgba(59, 57, 59, 0.8);
+  width: 100%;
+  height: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-color:white;
+  outline: none !important;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+}
+
+.inputpaymodal:focus {
+outline: none !important;
+}
+
+.inputpaymodal::placeholder {
+  color:gray;
+}
+/* --------------------------------------------- */
 
 /* MODAL TRANSACTION */
+
+
+#overlay-pay {
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 100vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 2;
+  cursor: pointer;
+}
+
+
+#overlay-rem {
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 100vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 2;
+  cursor: pointer;
+}
 
 
 #overlay-addtrans {

@@ -125,3 +125,19 @@ $(".loginsignuplinkdiv").click(function(){
   $(".signup").toggle("slide");
   
 });
+
+
+
+
+$("#closebtnid").click(function(){
+  $("#overlay-rem").fadeOut(500);
+});
+
+$("#closebtnid2").click(function(){
+  $("#overlay-pay").fadeOut(500);
+});
+
+
+// $(".loanReminder").mouseover(function() {
+//   $(this).css("background-color","red")
+// });

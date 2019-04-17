@@ -5,13 +5,13 @@ $(document).ready(function() {
     var moneyInput = $("input#amounttogiveid");
     var dateInput = $("input#datetopayid");
     var msgInput = $("input#msgtoborrowerid");
-    var transData;
+
     //-----------------------
 
 $("#sendbtnid").on("click", function(event) {
       event.preventDefault();
-      transData = {
-        lenderName:user.name,
+      var transData = {
+        lenderName: user.name,
         lenderId: user.id,
         email: emailInput.val().trim(),
         amount: moneyInput.val().trim(),
@@ -29,7 +29,9 @@ $("#sendbtnid").on("click", function(event) {
           // $('.errormessage').fadeIn(500).fadeOut(1000); 
           // $("").append("error");
           alert("hey");
-        })
+        });
+
+        newTransaction(transData);
     });
 
   });
