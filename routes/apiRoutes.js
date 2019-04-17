@@ -9,7 +9,7 @@ var currentDate = moment().format('"YYYY-MM-DD');
 module.exports = function (app) {
   // Get all examples
   app.get("/api/logout", function (req, res) {
-    console.log("TEST");
+    // console.log("TEST");
     res.json("/");
     // res.redirect("/");
   });
@@ -49,14 +49,14 @@ module.exports = function (app) {
   });
   // logout
   app.get("/logout", function (req, res) {
-    console.log(req.user);
+    // console.log(req.user);
     req.logout();
-    console.log(req.user)
+    // console.log(req.user)
     res.redirect("/");
   });
   //catch the user email
   app.get("/api/user_data", function (req, res) {
-    console.log(req.user)
+    // console.log(req.user)
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
@@ -143,7 +143,6 @@ module.exports = function (app) {
   // });
 
   app.get("/api/user_loans", function (req, res) {
-    console.log(req)
     console.log(req.user);
     db.Transactions.findAll({
       where: {
@@ -156,7 +155,6 @@ module.exports = function (app) {
   });
 
   app.get("/api/user_debts", function (req, res) {
-    console.log(req);
     db.Transactions.findAll({
       where: {
         borrowerId: req.user.id,
@@ -201,9 +199,28 @@ module.exports = function (app) {
     db.Transactions.update(
       {borrowerApproval:true}, 
       {where: {id:req.body.id}}
-    ).then((data)=>
+    ).then(function (data) {
       res.json(data)
-    ).catch(function (err) {
+      db.Transactions.findOne(
+        {where: {id:req.body.id}}
+        ).then(function(data) {
+          var mailOptions = {
+            from: "uoautomailer@gmail.com",
+            to: "uoautomailer@gmail.com",
+            subject: "Your UO transaction was approved by " + data.borrowerName,
+            text: "Hey, " + data.lenderName + ". Your transaction for $" + data.amount + " was approved by "
+            + data.borrowerName + ". You will find the transaction in your U section when you log in next." 
+          };
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          });
+        }
+        )
+    }).catch(function (err) {
       console.log(err);
       res.json(err);
     });
