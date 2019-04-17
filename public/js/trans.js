@@ -23,7 +23,7 @@ $("#sendbtnid").on("click", function(event) {
       
       $.post("/api/sendTrans", transData).then(function(data){
 
-          console.log("UAHSDOUAHSDOIAHS" + data)
+          // console.log("UAHSDOUAHSDOIAHS" + data)
           window.location.replace("/users");
         }, function(err) {
           // $('.errormessage').fadeIn(500).fadeOut(1000); 
