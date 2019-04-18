@@ -225,11 +225,10 @@ module.exports = function (app) {
       res.json(err);
     });
     });
-    app.get("/api/approve", function (req, res) {
+    app.get("/api/payNotification", function (req, res) {
       db.Transactions.findOne({
         where: {
-           borrowerEmail: req.user.email ,
-           borrowerApproval: null 
+          id: req.body.id
         }
       }).then(function (data) {
           if (data != null) {
@@ -240,4 +239,16 @@ module.exports = function (app) {
         res.json(err);
       });
     });
-};
+    app.put("/api/payed", function(req, res) {
+      console.log(req.body);
+      db.Transactions.update(
+        {paydate:currentDate}, 
+        {where: {id:req.body.id}}
+      ).then(function (data) {
+        res.json(data)
+      }).catch(function (err) {
+        console.log(err);
+        res.json(err);
+      });
+    });
+}
