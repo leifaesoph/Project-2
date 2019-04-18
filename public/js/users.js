@@ -19,7 +19,7 @@ $(document).ready(function () {
   $.get("/api/approve").then(function (data) {
 
     $('#title').html("Please approve the new transaction ");
-    $("#message").html("Sended By " + data.lenderName
+    $("#message").html("Sent by " + data.lenderName
       + "\n" + "Amount: " + data.amount
       + "\n" + "dueDate: " + data.dueDate
       + "\n" + "message: " + data.message);
@@ -31,10 +31,12 @@ $(document).ready(function () {
     //   event.preventDefault();
     //   transactionId = $(this).val()
     // });
-    $("#modalOpen").on("click", function (event) {
-      event.preventDefault();
-      $('#modal').modal('show');
-    });
+
+    $('.notificationdiv').fadeIn(500);
+    // $("#modalOpen").on("click", function (event) {
+    //   event.preventDefault();
+    //   $('#modal').modal('show');
+    // });
   });
   console.log("PAY" +transactionId);
   $.ajax({
@@ -44,7 +46,7 @@ $(document).ready(function () {
   }).then(function (data) {
 
     $('#title').html("Please approve the payment ");
-    $("#message").html("Sended By " + data.borrowerName
+    $("#message").html("Sent By " + data.borrowerName
       + "\n" + "Pay Amount: " + data.amount);
 
     $("#reject").val(data.id);
@@ -79,7 +81,6 @@ $(document).ready(function () {
         var newDiv = $("<div>");
         newDiv.attr("class", "loanReminddiv")
         $("#UPayDIV").append(newDiv);
-
         var newBtn=$("<button>");
         newDiv.append(newBtn);
         newBtn.attr("class", "loanReminder");
@@ -95,8 +96,8 @@ $(document).ready(function () {
      
       console.log(data);
       console.log(data[0].lenderName, data[0].dueDate, data[0].amount);
-      for(var i = 0; i < data.length; i++) {
-
+      for(let i = 0; i < data.length; i++) {
+//DMS REPLACED THE var i to let i
         if(data[i].payDate===null){
         debtTransactionNumber++;
         totalMoneyBorrowed += parseFloat(data[i].amount);
@@ -120,6 +121,26 @@ $(document).ready(function () {
 
           $('#paybtnid').val(transId);
           $("#overlay-pay").show(500);
+
+          //---------------- DISPLAY THE EMAIL DYNAMICALLY DMS ------
+          
+let lenderId = data[i].lenderId
+
+$.ajax({
+  url: "/api/lender_id",
+  method: "GET",
+  data: { id: lenderId }
+
+}).then(function (data){
+
+  let email = data.email
+
+//SET A VALUE FOR THIS EMAIL
+  $('#lendersemailid').val(email);
+});
+
+//----------------------------------
+
         });
       }
       else {
