@@ -21,6 +21,20 @@ body{
     outline: none !important;
     }
 
+    .modal {
+      background-color: rgb(134, 168, 230, 0.5);
+      padding: 20px;
+      width: 100%;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+    
+
+    .modal-footer {
+      display: flex;
+      justify-content: space-between;
+    }
 .notificationbtn1 {
   background-color: transparent;
   border-style:none;
@@ -291,6 +305,7 @@ p {
     overflow: hidden;
     margin-top: 30px;
     background: rgba(102, 51, 153, .2);
+    
   }
   .photo-cont2{
     width: 180px;
@@ -422,16 +437,16 @@ select:focus {
 .photo-usercont1{
   width: 190px;
   height: 190px;
+  position: relative;
   background: transparent;
   border-radius: 50%;
   overflow: hidden;
   margin-top: 0px;
-  background: white;
+
 }
 .photo-usercont2{
   width: 190px;
   height: 190px;
-  background: rgba(102, 51, 153, .6);
   display: inline-block;
   top:50%;
   left:50%;
@@ -440,16 +455,24 @@ select:focus {
   overflow: hidden;
   margin: 0;
   border-radius: 50%;
+  background-image: url('/images/ImagefromiOS.jpg');
+  background-size: 190px 190px;
+  
+
 }
 
 .idphotouser{
+  width: 190px;
+  height: 190px;
   position: absolute;
   display: inline-block;
   top:50%;
   left:50%;
+  overflow: hidden;
   transform: translate(-50%, -50%);
   border-radius: 20px;
-  /* border-radius: 50%; */
+  border-radius: 50%;
+  z-index: 1;
 }
 
 .contentswrapper {
@@ -583,7 +606,7 @@ justify-content: center; */
   padding-right: 15px;
   width: 70%;
   background-color: rgba(218, 114, 145, 0.5);
-
+  box-shadow: 5px 10px 18px #888888;
   /* justify-content: space-between;
   display: flex; */
 }
@@ -601,6 +624,7 @@ justify-content: center; */
     padding-right: 15px;
     width: 70%;
     background-color: rgba(133, 204, 236, 0.5);
+    box-shadow: 5px 10px 18px #888888;
   }
   .gaveInputs {
     display: flex;
@@ -669,6 +693,8 @@ justify-content: center; */
     transform: scale(1.2); 
     
     background-color: rgb(245, 9, 9, 0.4);
+
+
     }
 
 .addtransnwrap {
@@ -762,12 +788,14 @@ h2 {
 
 .remindercont2 {
   width: 60%;
-  background:transparent;
-  border-color: white;
+  
+  
+  background-color: rgba(104, 223, 80, 0.4);
+  
   padding: 20px;
-  border-style: solid;
-  border-width: 1px;
-  color: white;
+
+  color: black;
+  border-radius: 20px;
 }
 
 .remcont {
@@ -792,7 +820,7 @@ h2 {
   border-radius: 50px;
   text-align: center;
   margin-top: 0px;
-  background:rgba(142, 68, 173, .8);
+  background:rgba(235, 136, 144, 0.9);
   box-shadow: 5px 2px rgba(142, 68, 173, 0.5);
 }
 .btnrem:hover {
@@ -845,12 +873,13 @@ outline: none !important;
 
 .paycont2 {
   width: 60%;
-  background:transparent;
-  border-color: white;
+  background-color: rgba(240, 125, 125, 0.5);
+  
   padding: 20px;
-  border-style: solid;
+  
   border-width: 1px;
-  color: white;
+  color: black;
+  border-radius: 20px;
 }
 
 .paycont3 {
@@ -875,7 +904,7 @@ outline: none !important;
   border-radius: 50px;
   text-align: center;
   margin-top: 0px;
-  background:rgba(142, 68, 173, .8);
+  background:rgba(146, 179, 241, 0.8);
   box-shadow: 5px 2px rgba(142, 68, 173, 0.5);
 }
 .btnpaymodal:hover {
@@ -923,7 +952,7 @@ outline: none !important;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.7);
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgba(77, 19, 209, .5))) fixed;
   z-index: 2;
   cursor: pointer;
 }
@@ -938,7 +967,7 @@ outline: none !important;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.7);
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgba(77, 19, 209, .5))) fixed;
   z-index: 2;
   cursor: pointer;
 }
@@ -953,7 +982,7 @@ outline: none !important;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.7);
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgba(77, 19, 209, .5))) fixed;
   z-index: 2;
   cursor: pointer;
 }
@@ -967,14 +996,15 @@ outline: none !important;
 .trasactionmodalcontainer {
   justify-content: center;
   display: flex;
-  
+  color: black;
   width: 60%;
   height: 450px;
   margin-top: 50px;
   border-radius: 20px;
-  border-style: solid;
-  border-color: white;
+  /* border-style: solid;
+  border-color: white; */
   border-width: 1px;
+  background-color: rgba(133, 204, 236, 0.5);
 
 }
 
@@ -996,7 +1026,7 @@ outline: none !important;
 }
 
 .borrowersemail{
-  background-color: rgba(59, 57, 59, 0.8);
+  background-color: rgba(59, 57, 59, 0.5);
   width: 80%;
   height: 30px;
   border-style: solid;
@@ -1015,10 +1045,10 @@ outline: none !important;
 }
 
 .borrowersemail::placeholder {
-  color:gray;
+  color:darkgray;
 }
 .amounttogive{
-  background-color: rgba(59, 57, 59, 0.8);
+  background-color: rgba(59, 57, 59, 0.5);
   width: 80%;
   height: 30px;
   border-style: solid;
@@ -1037,11 +1067,11 @@ outline: none !important;
 }
 
 .amounttogive::placeholder {
-  color: gray;
+  color:darkgray;
 }
 
 .datetopay{
-  background-color: rgba(59, 57, 59, 0.8);
+  background-color: rgba(59, 57, 59, 0.5);
   width: 80%;
   height: 30px;
   border-style: solid;
@@ -1060,11 +1090,11 @@ outline: none !important;
 }
 
 .datetopay::placeholder {
-  color:gray;
+  color:darkgray;
 }
 
 .msgtoborrower{
-  background-color: rgba(59, 57, 59, 0.8);
+  background-color: rgba(59, 57, 59, 0.5);
   width: 80%;
   height: 30px;
   border-style: solid;
@@ -1083,7 +1113,7 @@ outline: none !important;
 }
 
 .msgtoborrower::placeholder {
-  color:gray;
+  color:darkgray;
 }
 
 .sendwrap {
@@ -1098,7 +1128,7 @@ outline: none !important;
 }
 
 .btnsend {
-  background-color: transparent;
+  
   width: 80px;
   height: 40px;
   border-style: solid;
@@ -1109,7 +1139,7 @@ outline: none !important;
   border-radius: 50px;
   text-align: center;
   margin-top: 0px;
-  background:rgba(142, 68, 173, .8);
+  background:rgba(243, 171, 112, 0.8);
   box-shadow: 5px 2px rgba(142, 68, 173, 0.5);
 }
 .btnsend:hover {

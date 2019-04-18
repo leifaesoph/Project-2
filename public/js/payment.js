@@ -28,15 +28,27 @@ $(document).ready(function () {
             method: "PUT",
             data: { id: id }
         }).then(data => {
-            console.log('putData: ', data);
-            console.log('insidePutPromise');
             window.location.href='/users'
         }, function (err) {
             console.log(err);
         })
     });
     $("#payreject").on("click", function (event) {
-        // event.preventDefault();
-        window.location.href='/users'
+        event.preventDefault();
+        id = $(this).val();
+        // console.log("ACCEPT");
+        // console.log(id);
+        // $('#modal').modal('hide');
+        $.ajax({
+            url: "/api/payreject",
+            method: "PUT",
+            data: { id: id }
+        }).then(data => {
+            window.location.href='/users'
+        }, function (err) {
+            console.log(err);
+        })
     });
+        
+    
 });

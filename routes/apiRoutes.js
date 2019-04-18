@@ -164,6 +164,26 @@ module.exports = function (app) {
       res.json(data)
     });
   });
+
+
+  //----------------------------------DMS----------------
+
+  app.get("/api/lender_id", function (req, res) {
+    console.log("FIND ID OOOoOOOOOOOO")
+    console.log(req);
+    db.Users.findOne({
+      where: {
+        id: req.query.id
+      }
+    }).then(function (data){
+      res.json(data);
+    })
+  })
+
+  //-----------------------------------------------
+
+  
+
   app.get("/api/approve", function (req, res) {
     db.Transactions.findOne({
       where: {
@@ -270,6 +290,24 @@ module.exports = function (app) {
       { where: { id: req.body.id } }
     ).then(function (data) {
       res.json(data)
+    }).catch(function (err) {
+      console.log(err);
+      res.json(err);
+    });
+  });
+
+  app.put("/api/payreject", function (req, res) {
+    console.log("NOTICE1")
+    // console.log(req.user.name);
+    db.Transactions.update(
+      {  payStatus: "unpaid"},
+      {where: {id: req.body.id}}
+    ).then(function (data) {
+      console.log("NOTICE")
+      console.log(data)
+      if (data !== null) {
+        res.json(data)
+      }
     }).catch(function (err) {
       console.log(err);
       res.json(err);

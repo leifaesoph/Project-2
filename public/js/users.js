@@ -19,7 +19,7 @@ $(document).ready(function () {
   $.get("/api/approve").then(function (data) {
 
     $('#title').html("Please approve the new transaction ");
-    $("#message").html("Sended By " + data.lenderName
+    $("#message").html("Sent by " + data.lenderName
       + "\n" + "Amount: " + data.amount
       + "\n" + "dueDate: " + data.dueDate
       + "\n" + "message: " + data.message);
@@ -52,7 +52,7 @@ $(document).ready(function () {
   //
   $.get("/api/user_loans").then(function (data) {
     console.log(data[0].borrowerName, data[1].payDate, data[0].amount);
-    for (var i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       if (!data[i].payDate) {
         loanTransactionNumber++;
         totalMoneyLent += parseFloat(data[i].amount);
@@ -103,6 +103,26 @@ $(document).ready(function () {
           var transId = $(this).val();
           $('#paybtnid').val(transId);
           $("#overlay-pay").show(500);
+
+          //---------------- DISPLAY THE EMAIL DYNAMICALLY DMS ------
+          
+let lenderId = data[i].lenderId
+
+$.ajax({
+  url: "/api/lender_id",
+  method: "GET",
+  data: { id: lenderId }
+
+}).then(function (data){
+
+  let email = data.email
+
+//SET A VALUE FOR THIS EMAIL
+  $('#lendersemailid').val(email);
+});
+
+//----------------------------------
+
         });
       }
       // else {

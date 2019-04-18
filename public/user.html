@@ -17,33 +17,35 @@
 
     <div class="usercont1">
         <div class="logoutbtn">
-            
 
-            <!-- ----------------------------------------- -->
+            <!-- NOTIFICATION MODAL DMS ----------------------------------------- -->
             <div class="notificationwrapper">
-            <button type="button" id ="modalOpen" class="notificationbtn1" data-toggle="modal" data-target="#exampleModal"><img src="./images/LOGO2PURP.png" class="linkin"
-                style="width:70px;height:70px" alt=“…”></button>
-         
-               <div class="notificationdiv" style="display:none">
-               <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                 <div class="modal-dialog" role="document">
-                   <div class="modal-content">
-                     <div class="modal-header">
-                       <h5 class="modal-title" id="title"></h5>
-                       
-                     </div>
-                     <div class="modal-body">
-                         <h5 class="h3 ml-5 mb-3"id="message"></h5>
-                     </div>
-                     <div class="modal-footer">
-                       <button type="button" id ="reject" class="btn btn-secondary needApprove" value= "" data-dismiss="modal">Reject</button>
-                       <button type="button" id="accept" class="btn btn-primary needApprove" value="" data-dismiss="modal">Accept</button>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-         
-             </div>
+                <button type="button" id="modalOpen" class="notificationbtn1" data-toggle="modal"
+                    data-target="#exampleModal"><img src="./images/LOGO2PURP.png" class="piglogo"
+                        style="width:70px;height:70px" alt=“…”></button>
+                <div class="notificationdiv" style="display:none">
+                    <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="title"></h5>
+
+                                </div>
+                                <div class="modal-body">
+                                    <h5 class="h3 ml-5 mb-3" id="message"></h5>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" id="reject" class="btn btn-secondary needApprove" value=""
+                                        data-dismiss="modal">Reject</button>
+                                    <button type="button" id="accept" class="btn btn-primary needApprove" value=""
+                                        data-dismiss="modal">Accept</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
              <!-- ----------------------------- -->
@@ -78,16 +80,14 @@
 
 <!-- ----------------------- -->
 
-             <button type="submit" id="logout" class="btnaddtrans">Log Out</button>
+            <button type="submit" id="logout" class="btnaddtrans">Log Out</button>
 
         </div>
         <div class="head-picuser">
             <div class="photo-usercont1">
 
                 <div class="photo-usercont2">
-                    <img src="./images/45500630.jpeg" class="idphotouser" style="width:200px;height:200px" alt=“…”
-                        id="userphoto">
-
+                    <img src="" class="idphotouser" alt=“…” id="userphoto">
 
                 </div>
             </div>
@@ -110,7 +110,6 @@
                                     <input type='file' name='image' />
                                 </form>
                             </div> -->
-
                         </div>
                     </div>
                 </div>
@@ -172,7 +171,6 @@
     </div>
 
     <div id="overlay-addtrans" style="display:none">
-
         <div class="transactionmodalwrap">
             <div class="trasactionmodalcontainer">
                 <div class="trasactionmodalcontents">
@@ -181,9 +179,9 @@
                         <h3>Log a New Transaction</h3>
                     </div>
 
-                    <div>
+                    <!-- <div>
                         <span>User Name (based on ID): </span><span class="username-from-DB">Blank</span>
-                    </div>
+                    </div> -->
 
                     <div>
                         <!-- ADDED POST -->
@@ -231,13 +229,9 @@
     </div>
 
     <!-- REMINDER MODAL -->
-
     <div id="overlay-rem" style="display:none">
-
         <div class="remindercont1">
-
             <div class="remindercont2">
-
                 <div>
                     <div>
                         REMINDER
@@ -245,7 +239,6 @@
                 </div>
                 <form action="">
                     <div class="remindermodalwrap">
-
                         <div class="form-group3">
                             <p><label for="datenotify">Reminder Date</label></p>
                             <input type="date" name="datenotify" class="datenotifyclass inputrem" id="datenotifyid"
@@ -275,7 +268,7 @@
         </div>
 
     </div>
-  
+
 
     <!-- ------------------------------------------------ -->
 
@@ -294,25 +287,27 @@
                 </div>
                 <form action="">
                     <div class="paymodalwrap">
-
+<!-- REPLACED THE ID FOR INPUTS DMS -->
                         <div class="form-group4">
                             <p><label for="datepay">Pay Date</label></p>
-                            <input type="date" name="datepay" class="datepayclass inputpaymodal" id="datenotifyid"
+                            <input type="date" name="datepay" class="datepayclass inputpaymodal" id="payid"
                                 placeholder="Enter Reminder Date">
                         </div>
-
+<!-- REPLACED THE ID FOR INPUTS DMS -->
                         <div class="form-group4">
                             <p><label for="lendersemail">Notify this Email</label></p>
                             <input type="email" name="lendersemail" class="lendersemailpay inputpaymodal"
-                                id="borrowersemailid" aria-describedby="emailHelp" placeholder="Lender's Email">
+                                id="lendersemailid" aria-describedby="emailHelp" placeholder="Lender's Email">
                         </div>
-
+<!-- REPLACED THE ID FOR INPUTS DMS -->
                         <div class="form-group4">
                             <p><label for="paymsg">Message</label></p>
-                            <input type="text" name="paymsg" class="paytolender inputpaymodal" id="remmsgtoborrowerid"
+                            <input type="text" name="paymsg" class="paytolender inputpaymodal" id="paymsgid"
                                 placeholder="Send a message to the lender!">
                         </div>
                     </div>
+
+
                 </form>
                 <div class="sendwrap">
                     <div class="paycont3">
