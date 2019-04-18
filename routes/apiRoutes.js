@@ -164,6 +164,26 @@ module.exports = function (app) {
       res.json(data)
     });
   });
+
+
+  //----------------------------------DMS----------------
+
+  app.get("/api/lender_id", function (req, res) {
+    console.log("FIND ID OOOoOOOOOOOO")
+    console.log(req);
+    db.Users.findOne({
+      where: {
+        id: req.query.id
+      }
+    }).then(function (data){
+      res.json(data);
+    })
+  })
+
+  //-----------------------------------------------
+
+  
+
   app.get("/api/approve", function (req, res) {
     db.Transactions.findOne({
       where: {
@@ -225,6 +245,7 @@ module.exports = function (app) {
       res.json(err);
     });
     });
+
     app.get("/api/payNotification", function (req, res) {
       db.Transactions.findOne({
         where: {
@@ -239,13 +260,20 @@ module.exports = function (app) {
         res.json(err);
       });
     });
-    app.put("/api/payed", function(req, res) {
+
+
+    app.put("/api/paid", function(req, res) {
       console.log(req.body);
       db.Transactions.update(
+
         {paydate:currentDate}, 
+
         {where: {id:req.body.id}}
+
       ).then(function (data) {
+
         res.json(data)
+        
       }).catch(function (err) {
         console.log(err);
         res.json(err);
