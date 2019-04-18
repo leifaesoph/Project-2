@@ -95,6 +95,7 @@ module.exports = function (app) {
           borrowerId: data.id,
           lenderName: req.body.lenderName,
           lenderId: req.body.lenderId,
+          lenderEmail: req.body.lenderEmail,
           currentDate: currentDate,
           amount: req.body.amount,
           dueDate: req.body.dueDate,
@@ -170,7 +171,6 @@ module.exports = function (app) {
 
   app.get("/api/lender_id", function (req, res) {
     console.log("FIND ID OOOoOOOOOOOO")
-    console.log(req);
     db.Users.findOne({
       where: {
         id: req.query.id
@@ -208,6 +208,7 @@ module.exports = function (app) {
       console.log("END");
       if (data !== null) {
         res.json(data);
+        // maybe send email to say borrower rejected transaction
       };
     }).catch(function (err) {
       console.log(err);
@@ -226,7 +227,7 @@ module.exports = function (app) {
       ).then(function (data) {
         var mailOptions = {
           from: "uoautomailer@gmail.com",
-          to: "uoautomailer@gmail.com",
+          to: data.lenderEmail,
           subject: "Your UO transaction was approved by " + data.borrowerName,
           text: "Hey, " + data.lenderName + ". Your transaction for $" + data.amount + " was approved by "
             + data.borrowerName + ". You will find the transaction in your U section when you log in next."
