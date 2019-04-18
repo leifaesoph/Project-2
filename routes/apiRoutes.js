@@ -3,36 +3,23 @@ var passport = require('passport');
 var transporter = require('../nodemailer/');
 var moment = require('moment');
 var currentDate = moment().format('"YYYY-MM-DD');
-//  console.log("DATE: " + currentDate);
-
-
 module.exports = function (app) {
-  // Get all examples
-  app.get("/api/logout", function (req, res) {
-    // console.log("TEST");
-    res.json("/");
-    // res.redirect("/");
-  });
 
+//for login
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
     res.json("/users");
   });
-
   // Create a new user
   app.post("/api/signup", function (req, res) {
-    console.log(req.body);
-
-    //DMS UPDATED THIS MONDY PM-----------------------------------
     db.Users.findOne({
       where: {
         email: req.body.email
       }
     }).then(function (data) {
       if (data === null) {
-
         db.Users.create(req.body).then(function (dbUsers) {
           res.json("/users");
         }).catch(function (err) {
@@ -43,20 +30,15 @@ module.exports = function (app) {
         res.status(400);
         res.send('Email Already Exists');
       }
-
     });
-
   });
   // logout
   app.get("/logout", function (req, res) {
-    // console.log(req.user);
     req.logout();
-    // console.log(req.user)
     res.redirect("/");
   });
   //catch the user email
   app.get("/api/user_data", function (req, res) {
-    // console.log(req.user)
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
@@ -73,22 +55,16 @@ module.exports = function (app) {
       });
     }
   });
-
-
-  //DMS UPDATED THIS MONDY MN-----------------------------------
-
+//post the new trans to db
   app.post("/api/sendTrans", function (req, res) {
     console.log(req.body);
-
     db.Users.findOne({
       where: {
         email: req.body.email
       }
     }).then(function (data) {
       if (data != null) {
-        console.log("BORROWERINF" + data);
-        // console.log(req.body);
-
+       
         var transaction = {
           borrowerEmail: data.email,
           borrowerName: data.name,
@@ -133,16 +109,7 @@ module.exports = function (app) {
     });
 
   });
-
-  //--------------------------------------------------
-
-  // Delete an example by id
-  // app.delete("/api/examples/:id", function (req, res) {
-  //   db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
-
+//find the loans trans
   app.get("/api/user_loans", function (req, res) {
     console.log(req.user);
     db.Transactions.findAll({
@@ -154,7 +121,7 @@ module.exports = function (app) {
       res.json(data)
     });
   });
-
+//find the debts trans
   app.get("/api/user_debts", function (req, res) {
     db.Transactions.findAll({
       where: {
@@ -165,12 +132,8 @@ module.exports = function (app) {
       res.json(data)
     });
   });
-
-
-  //----------------------------------DMS----------------
-
   app.get("/api/lender_id", function (req, res) {
-    console.log("FIND ID OOOoOOOOOOOO")
+  
     db.Users.findOne({
       where: {
         id: req.query.id
@@ -180,10 +143,7 @@ module.exports = function (app) {
     })
   })
 
-  //-----------------------------------------------
-
-
-
+//approve the new trans
   app.get("/api/approve", function (req, res) {
     db.Transactions.findOne({
       where: {
@@ -199,8 +159,10 @@ module.exports = function (app) {
       res.json(err);
     });
   });
+
+  //delete the rejected trans
   app.delete("/api/deleteTrans/:id", function (req, res) {
-    // console.log("IDhere");
+    
     console.log("ID" + req.params.id);
     db.Transactions.destroy({
       where: { id: req.params.id }
@@ -208,13 +170,14 @@ module.exports = function (app) {
       console.log("END");
       if (data !== null) {
         res.json(data);
-        // maybe send email to say borrower rejected transaction
       };
     }).catch(function (err) {
       console.log(err);
       res.json(err);
     });
   });
+
+  //update the trans borrowerapproved 
   app.put("/api/update", function (req, res) {
     console.log(req.body);
     db.Transactions.update(
@@ -246,7 +209,8 @@ module.exports = function (app) {
       res.json(err);
     });
   });
-  //for update to pending
+
+  //for update the payStatus to pending
   app.put("/api/payPending", function (req, res) {
     console.log("STTT");
     console.log(req.body);
@@ -261,18 +225,16 @@ module.exports = function (app) {
       res.json(err);
     });
   });
+
   //check the pay approve notice
   app.get("/api/payNotice", function (req, res) {
-    console.log("NOTICE1")
-    // console.log(req.user.name);
+
     db.Transactions.findOne({
       where: {
         lenderName: req.user.name,
         payStatus: "pending"
       }
     }).then(function (data) {
-      console.log("NOTICE")
-      console.log(data)
       if (data !== null) {
         res.json(data);
         var mailOptions = {
@@ -295,6 +257,7 @@ module.exports = function (app) {
       res.json(err);
     });
   });
+
   //for confor the pay and update the paydate in db
   app.put("/api/paid", function (req, res) {
     console.log("T1ST");
@@ -313,15 +276,13 @@ module.exports = function (app) {
     });
   });
 
+  //update the payStatus from pending to unpaid
   app.put("/api/payreject", function (req, res) {
-    console.log("NOTICE1")
-    // console.log(req.user.name);
+
     db.Transactions.update(
       { payStatus: "unpaid" },
       { where: { id: req.body.id } }
     ).then(function (data) {
-      console.log("NOTICE")
-      console.log(data)
       if (data !== null) {
         res.json(data);
         var mailOptions = {
