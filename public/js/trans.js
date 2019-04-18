@@ -13,6 +13,7 @@ $("#sendbtnid").on("click", function(event) {
       var transData = {
         lenderName: user.name,
         lenderId: user.id,
+        lenderEmail: user.email,
         email: emailInput.val().trim(),
         amount: moneyInput.val().trim(),
         dueDate: dateInput.val().trim(),
