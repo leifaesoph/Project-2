@@ -106,9 +106,9 @@ module.exports = function (app) {
           to: "uoautomailer@gmail.com",
           subject: "New Transaction Logged by " + req.body.lenderName,
           text: "Hey, " + data.name + ". A new Transaction has been logged by " + req.body.lenderName + " for $" + req.body.amount + ". "
-          + req.body.lenderName + " has set a due date of " + req.body.dueDate + ". Please login to UO to confirm this transaction. Thank you, UO." 
+            + req.body.lenderName + " has set a due date of " + req.body.dueDate + ". Please login to UO to confirm this transaction. Thank you, UO."
         };
-        transporter.sendMail(mailOptions, function(error, info){
+        transporter.sendMail(mailOptions, function (error, info) {
           if (error) {
             console.log(error);
           } else {
@@ -147,7 +147,7 @@ module.exports = function (app) {
     db.Transactions.findAll({
       where: {
         lenderId: req.user.id,
-        borrowerApproval: true 
+        borrowerApproval: true
       }
     }).then(function (data) {
       res.json(data)
@@ -187,12 +187,12 @@ module.exports = function (app) {
   app.get("/api/approve", function (req, res) {
     db.Transactions.findOne({
       where: {
-         borrowerEmail: req.user.email ,
-         borrowerApproval: null 
+        borrowerEmail: req.user.email,
+        borrowerApproval: null
       }
     }).then(function (data) {
-        if (data != null) {
-          res.json(data)
+      if (data != null) {
+        res.json(data)
       }
     }).catch(function (err) {
       console.log(err);
@@ -203,80 +203,114 @@ module.exports = function (app) {
     // console.log("IDhere");
     console.log("ID" + req.params.id);
     db.Transactions.destroy({
-      where: {id:req.params.id}
-      }).then(function (data) {
-        console.log("END");
-        if(data!==null) {
-      res.json(data);
-        };
+      where: { id: req.params.id }
+    }).then(function (data) {
+      console.log("END");
+      if (data !== null) {
+        res.json(data);
+      };
     }).catch(function (err) {
       console.log(err);
       res.json(err);
     });
   });
-  app.put("/api/update", function(req, res) {
+  app.put("/api/update", function (req, res) {
     console.log(req.body);
     db.Transactions.update(
-      {borrowerApproval:true}, 
-      {where: {id:req.body.id}}
+      { borrowerApproval: true },
+      { where: { id: req.body.id } }
     ).then(function (data) {
       res.json(data)
       db.Transactions.findOne(
-        {where: {id:req.body.id}}
-        ).then(function(data) {
-          var mailOptions = {
-            from: "uoautomailer@gmail.com",
-            to: "uoautomailer@gmail.com",
-            subject: "Your UO transaction was approved by " + data.borrowerName,
-            text: "Hey, " + data.lenderName + ". Your transaction for $" + data.amount + " was approved by "
-            + data.borrowerName + ". You will find the transaction in your U section when you log in next." 
-          };
-          transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-              console.log(error);
-            } else {
-              console.log('Email sent: ' + info.response);
-            }
-          });
-        }
-        )
+        { where: { id: req.body.id } }
+      ).then(function (data) {
+        var mailOptions = {
+          from: "uoautomailer@gmail.com",
+          to: "uoautomailer@gmail.com",
+          subject: "Your UO transaction was approved by " + data.borrowerName,
+          text: "Hey, " + data.lenderName + ". Your transaction for $" + data.amount + " was approved by "
+            + data.borrowerName + ". You will find the transaction in your U section when you log in next."
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Email sent: ' + info.response);
+          }
+        });
+      }
+      )
     }).catch(function (err) {
       console.log(err);
       res.json(err);
     });
+  });
+  //for update to pending
+  app.put("/api/payPending", function (req, res) {
+    console.log("STTT");
+    console.log(req.body);
+    console.log("KKKK");
+    db.Transactions.update(
+      { payStatus: "pending" },
+      { where: { id: req.body.id } }
+    ).then(function (data) {
+      res.json(data)
+    }).catch(function (err) {
+      console.log(err);
+      res.json(err);
     });
-
-    app.get("/api/payNotification", function (req, res) {
-      db.Transactions.findOne({
-        where: {
-          id: req.body.id
-        }
-      }).then(function (data) {
-          if (data != null) {
-            res.json(data)
-        }
-      }).catch(function (err) {
-        console.log(err);
-        res.json(err);
-      });
-    });
-
-
-    app.put("/api/paid", function(req, res) {
-      console.log(req.body);
-      db.Transactions.update(
-
-        {paydate:currentDate}, 
-
-        {where: {id:req.body.id}}
-
-      ).then(function (data) {
-
+  });
+  //check the pay approve notice
+  app.get("/api/payNotice", function (req, res) {
+    console.log("NOTICE1")
+    // console.log(req.user.name);
+    db.Transactions.findOne({
+      where: {
+        lenderName: req.user.name,
+        payStatus: "pending"
+      }
+    }).then(function (data) {
+      console.log("NOTICE")
+      console.log(data)
+      if (data !== null) {
         res.json(data)
-        
-      }).catch(function (err) {
-        console.log(err);
-        res.json(err);
-      });
+      }
+    }).catch(function (err) {
+      console.log(err);
+      res.json(err);
     });
+  });
+  //for confor the pay and update the paydate in db
+  app.put("/api/paid", function (req, res) {
+    console.log("T1ST");
+    console.log(req.body);
+    db.Transactions.update(
+      { payStatus: "paid" ,
+       payDate: currentDate },
+      { where: { id: req.body.id } }
+    ).then(function (data) {
+      res.json(data)
+    }).catch(function (err) {
+      console.log(err);
+      res.json(err);
+    });
+  });
+
+  app.put("/api/payreject", function (req, res) {
+    console.log("NOTICE1")
+    // console.log(req.user.name);
+    db.Transactions.update(
+      {  payStatus: "unpaid"},
+      {where: {id: req.body.id}}
+    ).then(function (data) {
+      console.log("NOTICE")
+      console.log(data)
+      if (data !== null) {
+        res.json(data)
+      }
+    }).catch(function (err) {
+      console.log(err);
+      res.json(err);
+    });
+  });
 }
