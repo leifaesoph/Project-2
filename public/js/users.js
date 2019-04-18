@@ -15,7 +15,7 @@ $(document).ready(function () {
     $(".user-name").text(user.name);
   });
 
-
+  //DMS EDITED THIS THURS START--------------------------------------------
   $.get("/api/approve").then(function (data) {
 
     $('#title').html("Please approve the new transaction ");
@@ -26,30 +26,31 @@ $(document).ready(function () {
 
     $("#reject").val(data.id);
     $("#accept").val(data.id);
-    $("#modalOpen").on("click", function (event) {
-      event.preventDefault();
-      $('#modal').modal('show');
-    });
+
+    $('.notificationdiv1').fadeIn(500);
+
+    // $("#modalOpen").on("click", function (event) {
+    //   event.preventDefault();
+    //   $('#modal').modal('show');
+    // });
   });
   //add the req for check the pending trans
   $.get("/api/payNotice").then(function (data) {
     console.log("NOTICE");
     console.log("data");
-    $('#paytitle').html("Please approve the payment ");
-    $("#paymessage").html("Sended By " + data.borrowerName
+    $('#paytitle').html("Please receive the payment ");
+    $("#paymessage").html("Sent by " + data.borrowerName
       + "\n" + "Amount: " + data.amount);
     $("#payreject").val(data.id);
     $("#payaccept").val(data.id);
-    $("#modalOpen").on("click", function (event) {
-      event.preventDefault();
-      // $('#modal').modal('show');
-    });
+    $('.notificationdiv2').fadeIn(500);
+    // $("#modalOpen").on("click", function (event) {
+    //   event.preventDefault();
+    //   // $('#modal').modal('show');
+    // });
   });
+  //DMS EDITED THIS THURS END--------------------------------------------
 
-  //
-
-
-  //
   $.get("/api/user_loans").then(function (data) {
     console.log(data[0].borrowerName, data[1].payDate, data[0].amount);
     for (let i = 0; i < data.length; i++) {
@@ -68,16 +69,21 @@ $(document).ready(function () {
           $("#overlay-rem").show(500);
         });
       }
-      // else {
-      //   var newDiv = $("<div>");
-      //   newDiv.attr("class", "loanReminddiv")
-      //   $("#UPayDIV").append(newDiv);
-      //   var newBtn=$("<button>");
-      //   newDiv.append(newBtn);
-      //   newBtn.attr("class", "loanReminder");
-      //   newBtn.attr("value", data[i].id);
-      //   newBtn.text(data[i].borrowerName + " | " + data[i].payDate + " | " + data[i].amount);
-      // };
+
+
+      else {
+        var newDiv = $("<div>");
+        newDiv.attr("class", "paymentstoyou")
+        $("#paymentstoyouid").append(newDiv);
+        var newBtn = $("<button>");
+        newDiv.append(newBtn);
+        newBtn.attr("class", "paymentstoyoubtn");
+        newBtn.attr("value", data[i].id);
+        newBtn.text(data[i].borrowerName + " | " + data[i].payDate + " | " + data[i].amount);
+      };
+
+
+
     };
     $("#Up").prepend("Loans: " + loanTransactionNumber + " | ");
     $("#Up").prepend("Total: $" + totalMoneyLent + " | ");
@@ -105,36 +111,39 @@ $(document).ready(function () {
           $("#overlay-pay").show(500);
 
           //---------------- DISPLAY THE EMAIL DYNAMICALLY DMS ------
-          
-let lenderId = data[i].lenderId
 
-$.ajax({
-  url: "/api/lender_id",
-  method: "GET",
-  data: { id: lenderId }
+          let lenderId = data[i].lenderId
 
-}).then(function (data){
+          $.ajax({
+            url: "/api/lender_id",
+            method: "GET",
+            data: { id: lenderId }
 
-  let email = data.email
+          }).then(function (data) {
 
-//SET A VALUE FOR THIS EMAIL
-  $('#lendersemailid').val(email);
-});
+            let email = data.email
 
-//----------------------------------
+            //SET A VALUE FOR THIS EMAIL
+            $('#lendersemailid').val(email);
+          });
+
+          //----------------------------------
 
         });
       }
-      // else {
-      //   var newDiv2 = $("<div>");
-      //   newDiv2.attr("class", "paybtndiv")
-      //   $("#OPayDIV").append(newDiv2)
-      //   var newBtn2=$("<button>");
-      //   newDiv2.append(newBtn2);
-      //   newBtn2.attr("class", "debtReminder");
-      //   newBtn2.attr("value", data[i].id);
-      //   newBtn2.text(data[i].lenderName + " | " + data[i].payDate + " | " + data[i].amount); 
-      // };
+      else {
+        var newDiv2 = $("<div>");
+        newDiv2.attr("class", "paymentsyoumade")
+        $("#paymentsyoumadeid").append(newDiv2)
+        var newBtn2 = $("<button>");
+        newDiv2.append(newBtn2);
+        newBtn2.attr("class", "paymentsyoumadebtn");
+        newBtn2.attr("value", data[i].id);
+        newBtn2.text(data[i].lenderName + " | " + data[i].payDate + " | " + data[i].amount);
+      };
+
+
+
     };
     $("#Op").append("Debts: " + debtTransactionNumber + " | ");
     $("#Op").append("Total: $" + totalMoneyBorrowed + " | ");

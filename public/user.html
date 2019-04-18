@@ -19,13 +19,15 @@
         <div class="logoutbtn">
 
             <!-- NOTIFICATION MODAL DMS ----------------------------------------- -->
-            <div class="notificationwrapper">
+            <div id="notificationwrapperid" class="notificationwrapper">
                 <button type="button" id="modalOpen" class="notificationbtn1" data-toggle="modal"
                     data-target="#exampleModal"><img src="./images/LOGO2PURP.png" class="piglogo"
                         style="width:70px;height:70px" alt=“…”></button>
-                <div class="notificationdiv" style="display:none">
+                <div class="notificationdiv1" style="display:none">
+                    <p class="notipar">Lender Msg</p>
                     <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
+                        
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -46,37 +48,41 @@
                     </div>
 
                 </div>
+
+                <div class="notificationdiv2" style="display:none">
+                    <p class="notipar">Payment</p>
+                    <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="paytitle"></h5>
+                            
+                          </div>
+                          <div class="modal-body">
+                              <h5 class="h3 ml-5 mb-3"id="paymessage"></h5>
+                          </div>
+                          <!-- this is for notification of payment -->
+                          <div class="modal-footer">
+                            <button type="button" id ="payreject" class="btn btn-secondary needApprove" value= "" data-dismiss="modal">Reject</button>
+                            <button type="button" id="payaccept" class="btn btn-primary needApprove" value="" data-dismiss="modal">Accept</button>
+                          </div>
+                          <!-- ----------------------------- -->
+                        </div>
+                      </div>
+                    </div>
+              
+                  </div>
+             
             </div>
 
              <!-- ----------------------------- -->
 <!-- for Payment approve  NEED to stylize-->
+<!-- 
 <div class="paynotificationwrapper">
     <button type="button" id ="modalOpen" class="notificationbtn1" data-toggle="modal" data-target="#exampleModal"><img src="./images/LOGO2PURP.png" class="linkin"
         style="width:70px;height:70px" alt=“…”></button>
  
-       <div class="notificationdiv" style="display:none">
-       <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="paytitle"></h5>
-               
-             </div>
-             <div class="modal-body">
-                 <h5 class="h3 ml-5 mb-3"id="paymessage"></h5>
-             </div>
-             <!-- this is for notification of payment -->
-             <div class="modal-footer">
-               <button type="button" id ="payreject" class="btn btn-secondary needApprove" value= "" data-dismiss="modal">Reject</button>
-               <button type="button" id="payaccept" class="btn btn-primary needApprove" value="" data-dismiss="modal">Accept</button>
-             </div>
-             <!-- ----------------------------- -->
-           </div>
-         </div>
-       </div>
- 
-     </div>
-    </div>
+           </div> -->
 
 <!-- ----------------------- -->
 
@@ -169,6 +175,34 @@
             </div>
         </div>
     </div>
+
+    <!-- asdfoiafdoiofidoi -->
+    <div class="paymentshistorybtnwrap">
+        <button type="button" id="paymentshistorybtnid" >PAYMENT HISTORY</button>
+    </div>
+
+<div class="paymentshistory" style="display:none">
+
+<div class="paymentstoyoutitle">
+    <div>PAYMENTS  TO YOU</div>
+</div>
+
+
+    <div id="paymentstoyouid">
+    </div>
+
+
+    <div>PAYMENTS YOU MADE</div>
+
+
+    <div id="paymentsyoumadeid">
+    </div>
+
+
+    
+</div>
+
+<!-- ------------------------------------- -->
 
     <div id="overlay-addtrans" style="display:none">
         <div class="transactionmodalwrap">
