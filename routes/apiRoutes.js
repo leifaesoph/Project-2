@@ -103,7 +103,7 @@ module.exports = function (app) {
 
         var mailOptions = {
           from: "uoautomailer@gmail.com",
-          to: "uoautomailer@gmail.com",
+          to: data.email,
           subject: "New Transaction Logged by " + req.body.lenderName,
           text: "Hey, " + data.name + ". A new Transaction has been logged by " + req.body.lenderName + " for $" + req.body.amount + ". "
           + req.body.lenderName + " has set a due date of " + req.body.dueDate + ". Please login to UO to confirm this transaction. Thank you, UO." 
