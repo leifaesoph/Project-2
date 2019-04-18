@@ -17,6 +17,11 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true,
             default: null
         },
+        payStatus:{
+            type: DataTypes.STRING,
+            allowNull: true,
+            default: "unpaid"
+        },
         borrowerEmail: {
             type: DataTypes.STRING,
             allowNull: false,

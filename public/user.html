@@ -47,7 +47,36 @@
             </div>
 
              <!-- ----------------------------- -->
+<!-- for Payment approve  NEED to stylize-->
+<div class="paynotificationwrapper">
+    <button type="button" id ="modalOpen" class="notificationbtn1" data-toggle="modal" data-target="#exampleModal"><img src="./images/LOGO2PURP.png" class="linkin"
+        style="width:70px;height:70px" alt=“…”></button>
+ 
+       <div class="notificationdiv" style="display:none">
+       <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="paytitle"></h5>
+               
+             </div>
+             <div class="modal-body">
+                 <h5 class="h3 ml-5 mb-3"id="paymessage"></h5>
+             </div>
+             <!-- this is for notification of payment -->
+             <div class="modal-footer">
+               <button type="button" id ="payreject" class="btn btn-secondary needApprove" value= "" data-dismiss="modal">Reject</button>
+               <button type="button" id="payaccept" class="btn btn-primary needApprove" value="" data-dismiss="modal">Accept</button>
+             </div>
+             <!-- ----------------------------- -->
+           </div>
+         </div>
+       </div>
+ 
+     </div>
+    </div>
 
+<!-- ----------------------- -->
 
              <button type="submit" id="logout" class="btnaddtrans">Log Out</button>
 
