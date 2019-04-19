@@ -5,6 +5,7 @@ var debtTransactionNumber = 0;
 var totalMoneyBorrowed = 0;
 var transactionId;
 
+
 $(document).ready(function () {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
@@ -52,7 +53,35 @@ $(document).ready(function () {
         newBtn.attr("value", data[i].id);
         newBtn.text(data[i].borrowerName + " | " + data[i].dueDate + " | " + data[i].amount);
         newBtn.click(function () {
+          console.log($(this).val())
+          var loanTransId = $(this).val();
+          $('#rembtnid').val(loanTransId);
           $("#overlay-rem").show(500);
+          let borrowerId = data[i].borrowerId
+
+          $.ajax({
+            url: "/api/borrower_id",
+            method: "GET",
+            data: { id: borrowerId }
+          }).then(function (data) {
+            let email = data.email
+            //SET A VALUE FOR THIS EMAIL
+            $('#remindborrower').val(email);
+          });
+            $("#rembtnid").on("click", function (event) {
+              event.preventDefault();
+              $.ajax({
+                url: "/api/reminder",
+                method: "GET",
+                data: { id: loanTransId }
+              }).then(function (data) {
+                let email = data.email
+                //SET A VALUE FOR THIS EMAIL
+                $('#remindborrower').val(email);
+
+          });
+          });
+      
         });
       }
       else {
@@ -92,8 +121,8 @@ $(document).ready(function () {
         newBtn2.text(data[i].lenderName + " | " + data[i].dueDate + " | " + data[i].amount);
         newBtn2.click(function () {
           console.log($(this).val())
-          var transId = $(this).val();
-          $('#paybtnid').val(transId);
+          var debtTransId = $(this).val();
+          $('#paybtnid').val(debtTransId);
           $("#overlay-pay").show(500);
           let lenderId = data[i].lenderId
 
