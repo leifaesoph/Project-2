@@ -8,52 +8,38 @@ var transactionId;
 $(document).ready(function () {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
-
   $.get("/api/user_data").then(function (data) {
     console.log(data);
     user = data;
     $(".user-name").text(user.name);
   });
 
-  //DMS EDITED THIS THURS START--------------------------------------------
   $.get("/api/approve").then(function (data) {
-
     $('#title').html("Please approve the new transaction ");
     $("#message").html("Sent by " + data.lenderName
       + "\n" + "Amount: " + data.amount
       + "\n" + "dueDate: " + data.dueDate
       + "\n" + "message: " + data.message);
-
     $("#reject").val(data.id);
     $("#accept").val(data.id);
-
     $('.notificationdiv1').fadeIn(500);
-
-    // $("#modalOpen").on("click", function (event) {
-    //   event.preventDefault();
-    //   $('#modal').modal('show');
-    // });
   });
+
   //add the req for check the pending trans
   $.get("/api/payNotice").then(function (data) {
-    console.log("NOTICE");
-    console.log("data");
     $('#paytitle').html("Please receive the payment ");
     $("#paymessage").html("Sent by " + data.borrowerName
       + "\n" + "Amount: " + data.amount);
     $("#payreject").val(data.id);
     $("#payaccept").val(data.id);
     $('.notificationdiv2').fadeIn(500);
-    // $("#modalOpen").on("click", function (event) {
-    //   event.preventDefault();
-    //   // $('#modal').modal('show');
-    // });
   });
-  //DMS EDITED THIS THURS END--------------------------------------------
 
+//the req to find the all the loan transaction
   $.get("/api/user_loans").then(function (data) {
     console.log(data[0].borrowerName, data[1].payDate, data[0].amount);
     for (let i = 0; i < data.length; i++) {
+      //show all the unpaid trans here 
       if (!data[i].payDate) {
         loanTransactionNumber++;
         totalMoneyLent += parseFloat(data[i].amount);
@@ -69,7 +55,6 @@ $(document).ready(function () {
           $("#overlay-rem").show(500);
         });
       }
-
       else {
         var newDiv = $("<div>");
         newDiv.attr("class", "paymentstoyou")
@@ -86,9 +71,12 @@ $(document).ready(function () {
     $("#Up").append("Loans: " + loanTransactionNumber + " | ");
     $("#Up").append("Total: $" + totalMoneyLent + " | ");
   });
+
+  //req to get all the debts trans
   $.get("/api/user_debts").then(function (data) {
     console.log(data);
     console.log(data[0].lenderName, data[0].dueDate, data[0].payDate);
+    //unpaid debts trans
     for (let i = 0; i < data.length; i++) {
       if (!data[i].payDate) {
         debtTransactionNumber++;
@@ -107,28 +95,21 @@ $(document).ready(function () {
           var transId = $(this).val();
           $('#paybtnid').val(transId);
           $("#overlay-pay").show(500);
-
-          //---------------- DISPLAY THE EMAIL DYNAMICALLY DMS ------
-
           let lenderId = data[i].lenderId
 
           $.ajax({
             url: "/api/lender_id",
             method: "GET",
             data: { id: lenderId }
-
           }).then(function (data) {
-
             let email = data.email
-
             //SET A VALUE FOR THIS EMAIL
             $('#lendersemailid').val(email);
           });
 
-          //----------------------------------
-
         });
       }
+      //paid dents trans
       else {
         var newDiv2 = $("<div>");
         newDiv2.attr("class", "paymentsyoumade")
@@ -139,9 +120,6 @@ $(document).ready(function () {
         newBtn2.attr("value", data[i].id);
         newBtn2.text(data[i].lenderName + " | " + data[i].payDate + " | " + data[i].amount);
       };
-
-
-
     };
     $("#Op").append("Debts: " + debtTransactionNumber + " | ");
     $("#Op").append("Total: $" + totalMoneyBorrowed + " | ");

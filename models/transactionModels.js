@@ -28,7 +28,7 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
               isEmail: true
             }
-          },
+        },
         message: {
             type: DataTypes.TEXT,
             allowNull: false
@@ -41,10 +41,12 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        lenderApproval: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true,
-            default: null
+        lenderEmail: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isEmail: true
+            }
         },
         borrowerName: {
             type: DataTypes.STRING,
