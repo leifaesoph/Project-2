@@ -75,12 +75,12 @@ $(document).ready(function () {
                 url: "/api/reminder",
                 method: "GET",
                 data: { id: loanTransId }
-              }).then(function (data) {
-  
+              }).then(data => {
+                  window.location.href = '/users';
+                  }
+              )
+          });
 
-          });
-          });
-      
         });
       }
       else {
