@@ -70,7 +70,6 @@ $(document).ready(function () {
         });
       }
 
-
       else {
         var newDiv = $("<div>");
         newDiv.attr("class", "paymentstoyou")
@@ -83,10 +82,9 @@ $(document).ready(function () {
       };
 
 
-
     };
-    $("#Up").prepend("Loans: " + loanTransactionNumber + " | ");
-    $("#Up").prepend("Total: $" + totalMoneyLent + " | ");
+    $("#Up").append("Loans: " + loanTransactionNumber + " | ");
+    $("#Up").append("Total: $" + totalMoneyLent + " | ");
   });
   $.get("/api/user_debts").then(function (data) {
     console.log(data);
