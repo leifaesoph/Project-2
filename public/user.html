@@ -20,7 +20,7 @@
         <div class="logoutbtn">
 
             <!-- NOTIFICATION MODAL DMS ----------------------------------------- -->
-            <div i  d="notificationwrapperid" class="notificationwrapper">
+            <div i d="notificationwrapperid" class="notificationwrapper">
                 <button type="button" id="modalOpen" class="notificationbtn1" data-toggle="modal"
                     data-target="#exampleModal"><img src="./images/LOGO2PURP.png" class="piglogo"
                         style="width:70px;height:70px" alt=“…”></button>
@@ -28,7 +28,7 @@
                     <p class="notipar">Lender Msg</p>
                     <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
-                        
+
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -52,28 +52,31 @@
 
                 <div class="notificationdiv2" style="display:none">
                     <p class="notipar">Payment</p>
-                    <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="paytitle"></h5>
-                            
-                          </div>
-                          <div class="modal-body">
-                              <h5 class="h3 ml-5 mb-3"id="paymessage"></h5>
-                          </div>
-                          <!-- this is for notification of payment -->
-                          <div class="modal-footer">
-                            <button type="button" id ="payreject" class="btn btn-secondary needApprove" value= "" data-dismiss="modal">Reject</button>
-                            <button type="button" id="payaccept" class="btn btn-primary needApprove" value="" data-dismiss="modal">Accept</button>
-                          </div>
-                          <!-- ----------------------------- -->
+                    <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="paytitle"></h5>
+
+                                </div>
+                                <div class="modal-body">
+                                    <h5 class="h3 ml-5 mb-3" id="paymessage"></h5>
+                                </div>
+                                <!-- this is for notification of payment -->
+                                <div class="modal-footer">
+                                    <button type="button" id="payreject" class="btn btn-secondary needApprove" value=""
+                                        data-dismiss="modal">Reject</button>
+                                    <button type="button" id="payaccept" class="btn btn-primary needApprove" value=""
+                                        data-dismiss="modal">Accept</button>
+                                </div>
+                                <!-- ----------------------------- -->
+                            </div>
                         </div>
-                      </div>
                     </div>
-              
-                  </div>
-             
+
+                </div>
+
             </div>
 
 
@@ -151,9 +154,9 @@
 
                     <div class="moneyyouowe">
                         <div class="moneyupdateyouowe">
-                            <div class="contfortitle">  
+                            <div class="contfortitle">
                                 <div class="moneyyouowetitle">
-                                        <div class="popupmsguo" style="display: none">UH-OH! SHOULD I PAY YOU?</div>
+                                    <div class="popupmsguo" style="display: none">UH-OH! SHOULD I PAY YOU?</div>
                                     <div class="uoletter">UO</div>
                                     <p id="Op"></p>
                                 </div>
@@ -175,33 +178,33 @@
     <div class="paymentshistorybtnwrap">
         <button type="button" id="paymentshistorybtnid">TRANSACTION HISTORY</button>
     </div>
-<br>
-<div class="paymentshistory" style="display:none">
+    <br>
+    <div class="paymentshistory" style="display:none">
 
-<div class="paymentstoyoutitle">
-    <div>PAYMENTS  TO YOU</div>
-</div>
-<div class="paymentstoyouwrap">
-    <div id="paymentstoyouid">
+        <div class="paymentstoyoutitle">
+            <div>PAYMENTS TO YOU</div>
+        </div>
+        <div class="paymentstoyouwrap">
+            <div id="paymentstoyouid">
+            </div>
+        </div>
+        <br>
+        <hr>
+        <div class="paymentsyoumadetitle">
+            <div>PAYMENTS YOU MADE</div>
+        </div>
+        <div class="paymentstoyouwrap">
+            <div id="paymentsyoumadeid">
+            </div>
+        </div>
+
+
     </div>
-</div>
-<br>
-<hr>
-<div class="paymentsyoumadetitle">
-    <div>PAYMENTS YOU MADE</div>
-</div>
-<div class="paymentstoyouwrap">
-    <div id="paymentsyoumadeid">
-    </div>
-</div>
 
+    <br>
+    <br>
 
-</div>
-
-<br>
-<br>
-
-<!-- ------------------------------------- -->
+    <!-- ------------------------------------- -->
 
     <div id="overlay-addtrans" style="display:none">
         <div class="transactionmodalwrap">
@@ -320,19 +323,19 @@
                 </div>
                 <form action="">
                     <div class="paymodalwrap">
-<!-- REPLACED THE ID FOR INPUTS DMS -->
+                        <!-- REPLACED THE ID FOR INPUTS DMS -->
                         <div class="form-group4">
                             <p><label for="datepay">Pay Date</label></p>
                             <input type="date" name="datepay" class="datepayclass inputpaymodal" id="payid"
                                 placeholder="Enter Reminder Date">
                         </div>
-<!-- REPLACED THE ID FOR INPUTS DMS -->
+                        <!-- REPLACED THE ID FOR INPUTS DMS -->
                         <div class="form-group4">
                             <p><label for="lendersemail">Notify this Email</label></p>
                             <input type="email" name="lendersemail" class="lendersemailpay inputpaymodal"
                                 id="lendersemailid" aria-describedby="emailHelp" placeholder="Lender's Email">
                         </div>
-<!-- REPLACED THE ID FOR INPUTS DMS -->
+                        <!-- REPLACED THE ID FOR INPUTS DMS -->
                         <div class="form-group4">
                             <p><label for="paymsg">Message</label></p>
                             <input type="text" name="paymsg" class="paytolender inputpaymodal" id="paymsgid"
