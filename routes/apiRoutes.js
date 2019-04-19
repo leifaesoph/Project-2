@@ -5,7 +5,7 @@ var moment = require('moment');
 var currentDate = moment().format('"YYYY-MM-DD');
 module.exports = function (app) {
 
-//for login
+  //for login
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
@@ -55,7 +55,7 @@ module.exports = function (app) {
       });
     }
   });
-//post the new trans to db
+  //post the new trans to db
   app.post("/api/sendTrans", function (req, res) {
     console.log(req.body);
     db.Users.findOne({
@@ -64,7 +64,7 @@ module.exports = function (app) {
       }
     }).then(function (data) {
       if (data != null) {
-       
+
         var transaction = {
           borrowerEmail: data.email,
           borrowerName: data.name,
@@ -109,7 +109,7 @@ module.exports = function (app) {
     });
 
   });
-//find the loans trans
+  //find the loans trans
   app.get("/api/user_loans", function (req, res) {
     console.log(req.user);
     db.Transactions.findAll({
@@ -121,7 +121,7 @@ module.exports = function (app) {
       res.json(data)
     });
   });
-//find the debts trans
+  //find the debts trans
   app.get("/api/user_debts", function (req, res) {
     db.Transactions.findAll({
       where: {
@@ -132,8 +132,9 @@ module.exports = function (app) {
       res.json(data)
     });
   });
+
   app.get("/api/lender_id", function (req, res) {
-  
+
     db.Users.findOne({
       where: {
         id: req.query.id
@@ -141,9 +142,35 @@ module.exports = function (app) {
     }).then(function (data) {
       res.json(data);
     })
-  })
+  });
 
-//approve the new trans
+  // to find a borrower to send reminders to
+  app.get("/api/borrower_id", function (req, res) {
+
+    db.Users.findOne({
+      where: {
+        id: req.query.id
+      }
+    }).then(function (data) {
+              var mailOptions = {
+          from: "uoautomailer@gmail.com",
+          to: data.borrowerEmail,
+          subject: "A friendly reminder from UO",
+          text: "Hey, " + data.borrowerName + ". This is a friendly reminder that you owe " + data.lenderName +
+          " $"+ data.amount + " by " + data.payDate + ". Log in to send confirmation of payment. Thanks for using UO!"
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Email sent: ' + info.response);
+          };
+        });
+      res.json(data);
+    })
+  });  
+
+  //approve the new trans
   app.get("/api/approve", function (req, res) {
     db.Transactions.findOne({
       where: {
@@ -162,7 +189,6 @@ module.exports = function (app) {
 
   //delete the rejected trans
   app.delete("/api/deleteTrans/:id", function (req, res) {
-    
     console.log("ID" + req.params.id);
     db.Transactions.destroy({
       where: { id: req.params.id }
@@ -176,6 +202,7 @@ module.exports = function (app) {
       res.json(err);
     });
   });
+  
 
   //update the trans borrowerapproved 
   app.put("/api/update", function (req, res) {
@@ -210,11 +237,40 @@ module.exports = function (app) {
     });
   });
 
+  // for reminding people that they owe you money
+
+  app.get("/api/reminder", function (req, res) {
+
+    db.Transactions.findOne({
+      where: {
+        id: req.query.id,
+      }
+    }).then(function (data) {
+      if (data !== null) {
+        var mailOptions = {
+          from: "uoautomailer@gmail.com",
+          to: data.borrowerEmail,
+          subject: "A friendly reminder from UO",
+          text: "Hey, " + data.borrowerName + ". This is a friendly reminder that you owe " + data.lenderName +
+          " $"+ data.amount + " by " + data.payDate + ". Log in to send confirmation of payment. Thanks for using UO!"
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Email sent: ' + info.response);
+          };
+        });
+        res.json(data);
+      }
+    }).catch(function (err) {
+      console.log(err);
+      res.json(err);
+    });
+  });
+
   //for update the payStatus to pending
   app.put("/api/payPending", function (req, res) {
-    console.log("STTT");
-    console.log(req.body);
-    console.log("KKKK");
     db.Transactions.update(
       { payStatus: "pending" },
       { where: { id: req.body.id } }
@@ -270,45 +326,14 @@ module.exports = function (app) {
       { where: { id: req.body.id } }
     ).then(function (data) {
       db.Transactions.findOne(
-        { where: { id: req.body.id} }
+        { where: { id: req.body.id } }
       ).then(function (data) {
-      var mailOptions = {
-        from: "uoautomailer@gmail.com",
-        to: data.borrowerEmail,
-        subject: "Woot! your payment was approved by " + data.lenderName,
-        text: "Hey, " + data.borrowerName + ". Great news! " + data.borrowerName + " confirmed that you repaid the $" + data.amount +
-          ". This transaction will no longer count against your balance! Thanks for using UO."
-      };
-      transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      });
-      res.json(data);
-    }).catch(function (err) {
-      console.log(err);
-      res.json(err);
-    });
-  });
-
-  //update the payStatus from pending to unpaid
-  app.put("/api/payreject", function (req, res) {
-    db.Transactions.update(
-      { payStatus: "unpaid" },
-      { where: { id: req.body.id } }
-    ).then(function (data) {
-      if (data !== null) {
-        db.Transactions.findOne(
-          { where: { id: req.body.id} }
-        ).then(function (data) {
         var mailOptions = {
           from: "uoautomailer@gmail.com",
           to: data.borrowerEmail,
-          subject: "Payment unapproved by " + data.lenderName,
-          text: "Hey, " + data.borrowerName + ". " + data.borrowerName + "did not confirm that you repaid the $" + data.amount +
-            ". You are welcome to resubmit this transaction as paid, but this transaction will remain as unpaid until you can get confirmation from the lender. Thanks for using UO."
+          subject: "Woot! your payment was approved by " + data.lenderName,
+          text: "Hey, " + data.borrowerName + ". Great news! " + data.borrowerName + " confirmed that you repaid the $" + data.amount +
+            ". This transaction will no longer count against your balance! Thanks for using UO."
         };
         transporter.sendMail(mailOptions, function (error, info) {
           if (error) {
@@ -318,12 +343,44 @@ module.exports = function (app) {
           }
         });
         res.json(data);
+      }).catch(function (err) {
+        console.log(err);
+        res.json(err);
       });
-      }
-    }).catch(function (err) {
-      console.log(err);
-      res.json(err);
     });
-  });
+
+    //update the payStatus from pending to unpaid
+    app.put("/api/payreject", function (req, res) {
+      db.Transactions.update(
+        { payStatus: "unpaid" },
+        { where: { id: req.body.id } }
+      ).then(function (data) {
+        if (data !== null) {
+          db.Transactions.findOne(
+            { where: { id: req.body.id } }
+          ).then(function (data) {
+            var mailOptions = {
+              from: "uoautomailer@gmail.com",
+              to: data.borrowerEmail,
+              subject: "Payment unapproved by " + data.lenderName,
+              text: "Hey, " + data.borrowerName + ". " + data.borrowerName + "did not confirm that you repaid the $" + data.amount +
+                ". You are welcome to resubmit this transaction as paid, but this transaction will remain as unpaid until you can get confirmation from the lender. Thanks for using UO."
+            };
+            transporter.sendMail(mailOptions, function (error, info) {
+              if (error) {
+                console.log(error);
+              } else {
+                console.log('Email sent: ' + info.response);
+              }
+            });
+            res.json(data);
+          });
+        }
+      }).catch(function (err) {
+        console.log(err);
+        res.json(err);
+      });
+    });
   }
-)};
+  )
+};
