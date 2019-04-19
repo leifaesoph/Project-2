@@ -630,6 +630,12 @@ justify-content: center; */
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(26, 18, 26);
 }
+
+.uoletter {
+
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(26, 18, 26);
+}
 .paymentstoyoubtn {
   margin-top: 20px;
   height: 30px;
@@ -680,12 +686,19 @@ hr {
   display: flex;
 }
 
+#Op {
+margin: 0;
+}
+
+#Up {
+  margin: 0;
+  }
 
 .moneyyouowetitle {
 
 border-radius: 5px;
 text-align: center;
-height: 50px;
+height: 55px;
 /* display: flex;
 justify-content: center; */
 
@@ -698,12 +711,14 @@ justify-content: center; */
   box-shadow: 5px 10px 18px #888888;
   /* justify-content: space-between;
   display: flex; */
+
+  margin-bottom: 25px;
 }
 
 .moneyyougivetitle {
   border-radius: 5px;
   text-align: center;
-  height: 50px;
+  height: 55px;
   /* justify-content: space-between;
   display: flex; */
   
@@ -714,6 +729,7 @@ justify-content: center; */
     width: 70%;
     background-color: rgba(133, 204, 236, 0.5);
     box-shadow: 5px 10px 18px #888888;
+    margin-bottom: 25px;
     
   }
   .gaveInputs {

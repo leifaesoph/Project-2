@@ -120,6 +120,22 @@ $(".addphotowrap").mouseleave(function(){
    
 });
 
+$(".ouletter").mouseover(function(){
+  $(".popupmsgou").fadeIn();
+});
+
+$(".ouletter").mouseleave(function(){
+  $(".popupmsgou").fadeOut();
+});
+
+$(".uoletter").mouseover(function(){
+  $(".popupmsguo").fadeIn();
+});
+  
+$(".uoletter").mouseleave(function(){
+  $(".popupmsguo").fadeOut();
+});
+
 $(".loginsignuplinkdiv").click(function(){
   // $(".signup").fadeIn(1000);
   $(".signup").toggle("slide");
