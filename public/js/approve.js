@@ -1,20 +1,22 @@
 $(document).ready(function () {
+    
+    //reject the new trans and send the req to server to delete 
     $("#reject").on("click", function (event) {
         event.preventDefault();
         id=$(this).val();
         console.log();
-        // $('#modal').modal('hide');
         $.ajax({
             url: "/api/deleteTrans/" + id,
             method: "DELETE"
         })
         .then(() => window.location.replace("/users"));
     });
+
+    //accepte the new trans and send the req to server to update 
     $("#accept").on("click", function (event) {
         event.preventDefault();
         id=$(this).val();
         console.log(id);
-        // $('#modal').modal('hide');
         $.ajax({
             url: "/api/update",
             method: "PUT",
@@ -25,5 +27,4 @@ $(document).ready(function () {
             window.location.href='/users'
         });
     });
-
 });
