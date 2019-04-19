@@ -68,6 +68,7 @@ $(document).ready(function () {
             //SET A VALUE FOR THIS EMAIL
             $('#remindborrower').val(email);
           });
+          
             $("#rembtnid").on("click", function (event) {
               event.preventDefault();
               $.ajax({
@@ -75,9 +76,7 @@ $(document).ready(function () {
                 method: "GET",
                 data: { id: loanTransId }
               }).then(function (data) {
-                let email = data.email
-                //SET A VALUE FOR THIS EMAIL
-                $('#remindborrower').val(email);
+  
 
           });
           });
