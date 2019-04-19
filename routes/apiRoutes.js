@@ -274,7 +274,6 @@ module.exports = function (app) {
       console.log("NOTICE")
       console.log(data)
       if (data !== null) {
-        res.json(data);
         var mailOptions = {
           from: "uoautomailer@gmail.com",
           to: data.lenderEmail,
@@ -289,6 +288,7 @@ module.exports = function (app) {
             console.log('Email sent: ' + info.response);
           };
         });
+        res.json(data);
       }
     }).catch(function (err) {
       console.log(err);
@@ -306,6 +306,23 @@ module.exports = function (app) {
       },
       { where: { id: req.body.id } }
     ).then(function (data) {
+      db.Transactions.findOne(
+        { where: { id: req.body.id} }
+      ).then(function (data) {
+      var mailOptions = {
+        from: "uoautomailer@gmail.com",
+        to: data.borrowerEmail,
+        subject: "Woot! your payment was approved by " + data.lenderName,
+        text: "Hey, " + data.borrowerName + ". Great news! " + data.borrowerName + " confirmed that you repaid the $" + data.amount +
+          ". This transaction will no longer count against your balance! Thanks for using UO."
+      };
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
       res.json(data);
     }).catch(function (err) {
       console.log(err);
@@ -315,15 +332,14 @@ module.exports = function (app) {
 
   app.put("/api/payreject", function (req, res) {
     console.log("NOTICE1")
-    // console.log(req.user.name);
     db.Transactions.update(
       { payStatus: "unpaid" },
       { where: { id: req.body.id } }
     ).then(function (data) {
-      console.log("NOTICE")
-      console.log(data)
       if (data !== null) {
-        res.json(data);
+        db.Transactions.findOne(
+          { where: { id: req.body.id} }
+        ).then(function (data) {
         var mailOptions = {
           from: "uoautomailer@gmail.com",
           to: data.borrowerEmail,
@@ -337,12 +353,14 @@ module.exports = function (app) {
           } else {
             console.log('Email sent: ' + info.response);
           }
-        }
-        )
-      };
+        });
+        res.json(data);
+      });
+      }
     }).catch(function (err) {
       console.log(err);
       res.json(err);
     });
   });
-}
+  }
+)};
