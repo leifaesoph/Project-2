@@ -1,31 +1,40 @@
+// For the payment approval
 $(document).ready(function () {
-
-    $("#reject").on("click", function (event) {
+    $("#paybtnid").on("click", function (event) {
         event.preventDefault();
-        id=$(this).val();
-        console.log();
-        // $('#modal').modal('hide');
+        id = $(this).val();
         $.ajax({
-            url: "/api/deleteTrans/" + id,
-            method: "DELETE"
-        })
-        .then(() => window.location.replace("/users"));
+            url: "/api/payPending",
+            method: "PUT",
+            data: { id: id }
+        }).then(data => {
+            window.location.href = '/users'
+        });
     });
-
-    $("#accept").on("click", function (event) {
+    $("#payaccept").on("click", function (event) {
         event.preventDefault();
-        id=$(this).val();
-        console.log(id);
-        // $('#modal').modal('hide');
+        id = $(this).val();
         $.ajax({
             url: "/api/paid",
             method: "PUT",
-            data: {id: id}  
+            data: { id: id }
         }).then(data => {
-            console.log('putData: ', data);
-            console.log('insidePutPromise');
             window.location.href='/users'
-        });
+        }, function (err) {
+            console.log(err);
+        })
     });
-
+    $("#payreject").on("click", function (event) {
+        event.preventDefault();
+        id = $(this).val();
+        $.ajax({
+            url: "/api/payreject",
+            method: "PUT",
+            data: { id: id }
+        }).then(data => {
+            window.location.href='/users'
+        }, function (err) {
+            console.log(err);
+        })
+    }); 
 });

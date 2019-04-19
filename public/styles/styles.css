@@ -1,4 +1,3 @@
-
 /*FIX THE FOOTER
 SET OVERFLOW HIDDEN TO BODY
 FIX THE MEDIA QUERY FOR LANDSCAPE USING OVERFLOW AUTO TO BODY*/
@@ -12,6 +11,19 @@ body{
   background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgb(198, 179, 243))) fixed;
   position: relative;
 }
+
+.signuptext1 {
+
+  font-size: 20px;
+  padding-left: 20px;
+    margin:0;
+    /* justify-content: center;
+    display: flex; */
+    color: rgb(91, 44, 104);
+    
+}
+
+
 
 .modal:focus {
   outline: none !important;
@@ -45,7 +57,16 @@ body{
 transform: scale(1.2); 
 }
 
-#reject {
+.notipar {
+  color: purple;
+}
+
+#UPayDIV {
+  Background: gray;
+
+}
+
+.needApprove {
   background-color: transparent;
   width: 50px;
   height: 20x;
@@ -57,16 +78,16 @@ font-size: 10px;
   border-radius: 50px;
   text-align: center;
   margin-top: 0px;
-  background:rgba(142, 68, 173, .8);
+  background:rgba(121, 51, 151, 0.8);
   box-shadow: 5px 2px rgba(142, 68, 173, 0.5);
 }
-#reject:hover {
+.needApprove:hover {
 -ms-transform: scale(1.2); /* IE 9 */
 -webkit-transform: scale(1.2); /* Safari 3-8 */
 transform: scale(1.2); 
 }
 
-#accept {
+.needApprove {
   background-color: transparent;
   width: 50px;
   height: 20x;
@@ -81,7 +102,7 @@ font-size: 10px;
   background:rgba(142, 68, 173, .8);
   box-shadow: 5px 2px rgba(142, 68, 173, 0.5);
 }
-#accept:hover {
+.needApprove:hover {
 -ms-transform: scale(1.2); /* IE 9 */
 -webkit-transform: scale(1.2); /* Safari 3-8 */
 transform: scale(1.2); 
@@ -167,11 +188,13 @@ transform: scale(1.2);
     display: flex;
     justify-content: center;
     flex-direction: row;
+    color: rgb(91, 44, 104);
     
 
 }
 .signupform1{
     width: 50%;
+ 
 
     
 
@@ -275,12 +298,7 @@ display: flex;
   -webkit-transform: scale(1.2); /* Safari 3-8 */
   transform: scale(1.2); 
 }
-.signuptext1 {
-    margin:0;
-    /* justify-content: center;
-    display: flex; */
-    
-}
+
 .signuptext {
     margin-left: 10px;
     margin-top:30px; 
@@ -371,8 +389,9 @@ p {
 
 
 ::placeholder{
-    color: gray;
+    color: rgb(88, 60, 100);
     font-size: 15px;
+    font-family: 'Lato', sans-serif;
 }
 
 .btn1{
@@ -592,11 +611,113 @@ flex-direction: row;
 
 }
 
+.paymentshistorybtnwrap {
+  display: flex;
+  justify-content: center;
+}
+
+#paymentshistorybtnid {
+
+  border-radius: 50px;
+text-align: center;
+height: 50px;
+/* display: flex;
+justify-content: center; */
+
+  padding-bottom: 15px;
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 20%;
+  border-color: transparent;
+  background-color: rgba(66, 125, 235, 0.5);
+  box-shadow: 5px 10px 18px #888888;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  /* justify-content: space-between;
+  display: flex; */
+}
+
+#paymentshistorybtnid:hover {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2); 
+  }
+
+.ouletter {
+
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(26, 18, 26);
+}
+
+.uoletter {
+
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(26, 18, 26);
+}
+.paymentstoyoubtn {
+  margin-top: 20px;
+  height: 30px;
+  width: 100%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: rgba(107, 240, 184, 0.2);
+  font-size: 12px;
+
+}
+
+.paymentsyoumadebtn {
+  margin-top: 20px;
+  height: 30px;
+  width: 100%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: rgba(226, 88, 88, 0.2);
+  font-size: 12px;
+
+}
+.paymentstoyouwrap {
+  justify-content: center;
+  display: flex;
+}
+#paymentstoyouid {
+  width: 20%;
+ 
+}
+
+#paymentsyoumadeid {
+  width: 20%;
+  
+}
+hr {
+  width: 30%;
+}
+
+.paymentstoyoutitle {
+  justify-content: center;
+  display: flex;
+}
+
+.paymentsyoumadetitle {
+  justify-content: center;
+  display: flex;
+}
+
+#Op {
+margin: 0;
+}
+
+#Up {
+  margin: 0;
+  }
+
 .moneyyouowetitle {
 
 border-radius: 5px;
 text-align: center;
-height: 50px;
+height: 55px;
 /* display: flex;
 justify-content: center; */
 
@@ -609,12 +730,14 @@ justify-content: center; */
   box-shadow: 5px 10px 18px #888888;
   /* justify-content: space-between;
   display: flex; */
+
+  margin-bottom: 25px;
 }
 
 .moneyyougivetitle {
   border-radius: 5px;
   text-align: center;
-  height: 50px;
+  height: 55px;
   /* justify-content: space-between;
   display: flex; */
   
@@ -625,6 +748,8 @@ justify-content: center; */
     width: 70%;
     background-color: rgba(133, 204, 236, 0.5);
     box-shadow: 5px 10px 18px #888888;
+    margin-bottom: 25px;
+    
   }
   .gaveInputs {
     display: flex;
@@ -833,12 +958,12 @@ transform: scale(1.2);
   width: 100%;
 }
 .inputrem{
-  background-color: rgba(59, 57, 59, 0.8);
+  background-color: rgba(144, 121, 170, 0.6);
   width: 100%;
   height: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color:white;
+  border-color:rgb(96, 177, 157);
   outline: none !important;
   color: white;
   border-radius: 5px;
@@ -852,7 +977,7 @@ outline: none !important;
 }
 
 .inputrem::placeholder {
-  color:gray;
+  color:lightgray;
 }
 /* --------------------------------------------- */
  
@@ -917,12 +1042,12 @@ transform: scale(1.2);
   width: 100%;
 }
 .inputpaymodal{
-  background-color: rgba(59, 57, 59, 0.8);
+  background-color: rgba(144, 121, 170, 0.8);
   width: 100%;
   height: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color:white;
+  border-color:rgb(236, 102, 102);
   outline: none !important;
   color: white;
   border-radius: 5px;
@@ -1004,7 +1129,7 @@ outline: none !important;
   /* border-style: solid;
   border-color: white; */
   border-width: 1px;
-  background-color: rgba(133, 204, 236, 0.5);
+  background-color: rgba(108, 192, 231, 0.5);
 
 }
 
@@ -1026,12 +1151,12 @@ outline: none !important;
 }
 
 .borrowersemail{
-  background-color: rgba(59, 57, 59, 0.5);
+  background-color: rgba(144, 121, 170, 0.6);
   width: 80%;
   height: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color:white;
+  border-color:rgb(118, 167, 230);
   outline: none !important;
   color: white;
   border-radius: 5px;
@@ -1045,15 +1170,15 @@ outline: none !important;
 }
 
 .borrowersemail::placeholder {
-  color:darkgray;
+  color:rgb(226, 205, 205);
 }
 .amounttogive{
-  background-color: rgba(59, 57, 59, 0.5);
+  background-color: rgba(144, 121, 170, 0.6);
   width: 80%;
   height: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color:white;
+  border-color:rgb(118, 167, 230);
   outline: none !important;
   color: black;
   border-radius: 5px;
@@ -1067,16 +1192,16 @@ outline: none !important;
 }
 
 .amounttogive::placeholder {
-  color:darkgray;
+  color:rgb(226, 205, 205);
 }
 
 .datetopay{
-  background-color: rgba(59, 57, 59, 0.5);
+  background-color: rgba(144, 121, 170, 0.6);
   width: 80%;
   height: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color:white;
+  border-color:rgb(118, 167, 230);
   outline: none !important;
   color: black;
   border-radius: 5px;
@@ -1090,16 +1215,16 @@ outline: none !important;
 }
 
 .datetopay::placeholder {
-  color:darkgray;
+  color:rgb(226, 205, 205);
 }
 
 .msgtoborrower{
-  background-color: rgba(59, 57, 59, 0.5);
+  background-color: rgba(144, 121, 170, 0.6);
   width: 80%;
   height: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color:white;
+  border-color:rgb(118, 167, 230);
   outline: none !important;
   color: black;
   border-radius: 5px;
@@ -1113,7 +1238,7 @@ outline: none !important;
 }
 
 .msgtoborrower::placeholder {
-  color:darkgray;
+  color:rgb(226, 205, 205);
 }
 
 .sendwrap {
@@ -1275,6 +1400,27 @@ body {
       height: 100%;
     }
 
+
+
+    #paymentshistorybtnid {
+
+   
+      width: 50%;
+     
+    }
+    
+  
+    
+    #paymentstoyouid {
+      width: 50%;
+     
+    }
+    
+    #paymentsyoumadeid {
+      width: 50%;
+      
+    }
+
 }
 
 
@@ -1324,6 +1470,391 @@ body{
 }
 
 }
+
+
+
+@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
+
+
+  .logsignwrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    height: 100%;
+    border-radius: 20px;
+    margin: 0;
+
+}
+
+.signup{
+  width: 100%;
+  height: 100vw;
+  /* border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px; */
+  
+}
+.signupform{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  
+
+}
+.signupform1{
+  width: 50%;
+
+  
+
+}
+.signupform2{
+  width: 50%;
+
+
+}
+
+.introhalf{
+  width: 100%;
+   
+}
+
+.photo-cont1{
+
+  margin-top: 0px;
+
+}
+
+.loginoption {
+  justify-content: center;
+  display: flex;
+  padding-bottom: 10px;
+  /* border-top-right-radius: 20px; */
+  margin-top: 0px;
+}
+
+.loginInner {
+  width:90%;
+ 
+  margin-top: 10px;
+  
+
+}
+
+.signuptext {
+  
+  margin-top:10px; 
+  /* justify-content: ce
+  nter;
+  display: flex; */
+}
+
+.transactionswrap {
+  display: flex;
+  flex-direction: column;
+    justify-content: center;
+  
+  }
+
+  .moneyyougave {
+    width: 100%;
+    border-style: none;
+  
+  }
+
+  .moneyyouowe {
+    width: 100%;
+    margin-top: 20px;
+    border-style: none;
+
+  }
+
+  
+  
+  
+  .contents {
+    width: 100%;
+      height: 100%;
+    }
+
+
+    #paymentshistorybtnid {
+
+   
+      width: 50%;
+     
+    }
+    
+  
+    
+    #paymentstoyouid {
+      width: 50%;
+     
+    }
+    
+    #paymentsyoumadeid {
+      width: 50%;
+      
+    }
+}
+
+@media (device-height: 667px) and (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2){
+
+
+  .logsignwrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    height: 100%;
+    border-radius: 20px;
+    margin: 0;
+
+}
+
+.signup{
+  width: 100%;
+  height: 100vw;
+  /* border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px; */
+  
+}
+.signupform{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  
+
+}
+.signupform1{
+  width: 50%;
+
+  
+
+}
+.signupform2{
+  width: 50%;
+
+
+}
+
+.introhalf{
+  width: 100%;
+   
+}
+
+.photo-cont1{
+
+  margin-top: 0px;
+
+}
+
+.loginoption {
+  justify-content: center;
+  display: flex;
+  padding-bottom: 10px;
+  /* border-top-right-radius: 20px; */
+  margin-top: 0px;
+}
+
+.loginInner {
+  width:90%;
+ 
+  margin-top: 10px;
+  
+
+}
+
+.signuptext {
+  
+  margin-top:10px; 
+  /* justify-content: ce
+  nter;
+  display: flex; */
+}
+
+.transactionswrap {
+  display: flex;
+  flex-direction: column;
+    justify-content: center;
+  
+  }
+
+  .moneyyougave {
+    width: 100%;
+    border-style: none;
+  
+  }
+
+  .moneyyouowe {
+    width: 100%;
+    margin-top: 20px;
+    border-style: none;
+
+  }
+
+  
+  
+  
+  .contents {
+    width: 100%;
+      height: 100%;
+    }
+
+
+    #paymentshistorybtnid {
+
+   
+      width: 50%;
+     
+    }
+    
+  
+    
+    #paymentstoyouid {
+      width: 50%;
+     
+    }
+    
+    #paymentsyoumadeid {
+      width: 50%;
+      
+    }
+}
+
+@media (device-height: 736px) and (device-width: 414px) and (-webkit-min-device-pixel-ratio: 2){
+
+
+  .logsignwrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    height: 100%;
+    border-radius: 20px;
+    margin: 0;
+
+}
+
+.signup{
+  width: 100%;
+  height: 100vw;
+  /* border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px; */
+  
+}
+.signupform{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  
+
+}
+.signupform1{
+  width: 50%;
+
+  
+
+}
+.signupform2{
+  width: 50%;
+
+
+}
+
+.introhalf{
+  width: 100%;
+   
+}
+
+.photo-cont1{
+
+  margin-top: 0px;
+
+}
+
+.loginoption {
+  justify-content: center;
+  display: flex;
+  padding-bottom: 10px;
+  /* border-top-right-radius: 20px; */
+  margin-top: 0px;
+}
+
+.loginInner {
+  width:90%;
+ 
+  margin-top: 10px;
+  
+
+}
+
+
+
+.signuptext {
+  
+  margin-top:10px; 
+  /* justify-content: ce
+  nter;
+  display: flex; */
+}
+
+.transactionswrap {
+  display: flex;
+  flex-direction: column;
+    justify-content: center;
+  
+  }
+
+  .moneyyougave {
+    width: 100%;
+    border-style: none;
+  
+  }
+
+  .moneyyouowe {
+    width: 100%;
+    margin-top: 20px;
+    border-style: none;
+
+  }
+
+  
+  
+  
+  .contents {
+    width: 100%;
+      height: 100%;
+    }
+
+
+    #paymentshistorybtnid {
+
+   
+      width: 50%;
+     
+    }
+    
+  
+    
+    #paymentstoyouid {
+      width: 50%;
+     
+    }
+    
+    #paymentsyoumadeid {
+      width: 50%;
+      
+    }
+}
+
+
+
 @media (device-height: 812px) and (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2){
 
 
@@ -1429,6 +1960,25 @@ body{
       height: 100%;
     }
 
+
+    #paymentshistorybtnid {
+
+   
+      width: 50%;
+     
+    }
+    
+  
+    
+    #paymentstoyouid {
+      width: 50%;
+     
+    }
+    
+    #paymentsyoumadeid {
+      width: 50%;
+      
+    }
 }
 
 
