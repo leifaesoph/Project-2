@@ -12,6 +12,19 @@ body{
   position: relative;
 }
 
+.signuptext1 {
+
+  font-size: 20px;
+  padding-left: 20px;
+    margin:0;
+    /* justify-content: center;
+    display: flex; */
+    color: rgb(91, 44, 104);
+    
+}
+
+
+
 .modal:focus {
   outline: none !important;
   }
@@ -175,11 +188,13 @@ transform: scale(1.2);
     display: flex;
     justify-content: center;
     flex-direction: row;
+    color: rgb(91, 44, 104);
     
 
 }
 .signupform1{
     width: 50%;
+ 
 
     
 
@@ -283,12 +298,7 @@ display: flex;
   -webkit-transform: scale(1.2); /* Safari 3-8 */
   transform: scale(1.2); 
 }
-.signuptext1 {
-    margin:0;
-    /* justify-content: center;
-    display: flex; */
-    
-}
+
 .signuptext {
     margin-left: 10px;
     margin-top:30px; 
@@ -379,8 +389,9 @@ p {
 
 
 ::placeholder{
-    color: gray;
+    color: rgb(88, 60, 100);
     font-size: 15px;
+    font-family: 'Lato', sans-serif;
 }
 
 .btn1{
@@ -617,13 +628,21 @@ justify-content: center; */
   padding-top: 5px;
   padding-left: 15px;
   padding-right: 15px;
-  width: 30%;
+  width: 20%;
   border-color: transparent;
   background-color: rgba(66, 125, 235, 0.5);
   box-shadow: 5px 10px 18px #888888;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
   /* justify-content: space-between;
   display: flex; */
 }
+
+#paymentshistorybtnid:hover {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2); 
+  }
 
 .ouletter {
 
@@ -939,12 +958,12 @@ transform: scale(1.2);
   width: 100%;
 }
 .inputrem{
-  background-color: rgba(59, 57, 59, 0.8);
+  background-color: rgba(144, 121, 170, 0.6);
   width: 100%;
   height: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color:white;
+  border-color:rgb(96, 177, 157);
   outline: none !important;
   color: white;
   border-radius: 5px;
@@ -958,7 +977,7 @@ outline: none !important;
 }
 
 .inputrem::placeholder {
-  color:gray;
+  color:lightgray;
 }
 /* --------------------------------------------- */
  
@@ -1023,12 +1042,12 @@ transform: scale(1.2);
   width: 100%;
 }
 .inputpaymodal{
-  background-color: rgba(59, 57, 59, 0.8);
+  background-color: rgba(144, 121, 170, 0.8);
   width: 100%;
   height: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color:white;
+  border-color:rgb(236, 102, 102);
   outline: none !important;
   color: white;
   border-radius: 5px;
@@ -1110,7 +1129,7 @@ outline: none !important;
   /* border-style: solid;
   border-color: white; */
   border-width: 1px;
-  background-color: rgba(133, 204, 236, 0.5);
+  background-color: rgba(108, 192, 231, 0.5);
 
 }
 
@@ -1132,12 +1151,12 @@ outline: none !important;
 }
 
 .borrowersemail{
-  background-color: rgba(59, 57, 59, 0.5);
+  background-color: rgba(144, 121, 170, 0.6);
   width: 80%;
   height: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color:white;
+  border-color:rgb(118, 167, 230);
   outline: none !important;
   color: white;
   border-radius: 5px;
@@ -1151,15 +1170,15 @@ outline: none !important;
 }
 
 .borrowersemail::placeholder {
-  color:darkgray;
+  color:rgb(226, 205, 205);
 }
 .amounttogive{
-  background-color: rgba(59, 57, 59, 0.5);
+  background-color: rgba(144, 121, 170, 0.6);
   width: 80%;
   height: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color:white;
+  border-color:rgb(118, 167, 230);
   outline: none !important;
   color: black;
   border-radius: 5px;
@@ -1173,16 +1192,16 @@ outline: none !important;
 }
 
 .amounttogive::placeholder {
-  color:darkgray;
+  color:rgb(226, 205, 205);
 }
 
 .datetopay{
-  background-color: rgba(59, 57, 59, 0.5);
+  background-color: rgba(144, 121, 170, 0.6);
   width: 80%;
   height: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color:white;
+  border-color:rgb(118, 167, 230);
   outline: none !important;
   color: black;
   border-radius: 5px;
@@ -1196,16 +1215,16 @@ outline: none !important;
 }
 
 .datetopay::placeholder {
-  color:darkgray;
+  color:rgb(226, 205, 205);
 }
 
 .msgtoborrower{
-  background-color: rgba(59, 57, 59, 0.5);
+  background-color: rgba(144, 121, 170, 0.6);
   width: 80%;
   height: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color:white;
+  border-color:rgb(118, 167, 230);
   outline: none !important;
   color: black;
   border-radius: 5px;
@@ -1219,7 +1238,7 @@ outline: none !important;
 }
 
 .msgtoborrower::placeholder {
-  color:darkgray;
+  color:rgb(226, 205, 205);
 }
 
 .sendwrap {
@@ -1774,6 +1793,8 @@ body{
   
 
 }
+
+
 
 .signuptext {
   
