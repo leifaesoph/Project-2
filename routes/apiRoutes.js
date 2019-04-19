@@ -152,20 +152,6 @@ module.exports = function (app) {
         id: req.query.id
       }
     }).then(function (data) {
-              var mailOptions = {
-          from: "uoautomailer@gmail.com",
-          to: data.borrowerEmail,
-          subject: "A friendly reminder from UO",
-          text: "Hey, " + data.borrowerName + ". This is a friendly reminder that you owe " + data.lenderName +
-          " $"+ data.amount + " by " + data.payDate + ". Log in to send confirmation of payment. Thanks for using UO!"
-        };
-        transporter.sendMail(mailOptions, function (error, info) {
-          if (error) {
-            console.log(error);
-          } else {
-            console.log('Email sent: ' + info.response);
-          };
-        });
       res.json(data);
     })
   });  
