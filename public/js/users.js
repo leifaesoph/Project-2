@@ -74,14 +74,12 @@ $(document).ready(function () {
                 url: "/api/reminder",
                 method: "GET",
                 data: { id: loanTransId }
-              }).then(function (data) {
-                let email = data.email
-                //SET A VALUE FOR THIS EMAIL
-                $('#remindborrower').val(email);
+              }).then(data => {
+                  window.location.href = '/users';
+                  }
+              )
+          });
 
-          });
-          });
-      
         });
       }
       //show the paid trans here
