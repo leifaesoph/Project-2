@@ -68,6 +68,7 @@ $(document).ready(function () {
             //SET A VALUE FOR THIS EMAIL
             $('#remindborrower').val(email);
           });
+          
             $("#rembtnid").on("click", function (event) {
               event.preventDefault();
               $.ajax({
@@ -82,7 +83,6 @@ $(document).ready(function () {
 
         });
       }
-      //show the paid trans here
       else {
         var newDiv = $("<div>");
         newDiv.attr("class", "paymentstoyou")
@@ -93,9 +93,11 @@ $(document).ready(function () {
         newBtn.attr("value", data[i].id);
         newBtn.text(data[i].borrowerName + " | " + data[i].payDate + " | " + data[i].amount);
       };
+
+
     };
-    $("#Up").prepend("Loans: " + loanTransactionNumber + " | ");
-    $("#Up").prepend("Total: $" + totalMoneyLent + " | ");
+    $("#Up").append("Loans: " + loanTransactionNumber + " | ");
+    $("#Up").append("Total: $" + totalMoneyLent + " | ");
   });
 
   //req to get all the debts trans
