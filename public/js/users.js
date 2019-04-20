@@ -102,8 +102,8 @@ $(document).ready(function () {
 
   //req to get all the debts trans
   $.get("/api/user_debts").then(function (data) {
-    console.log(data);
-    console.log(data[0].lenderName, data[0].dueDate, data[0].payDate);
+    // console.log(data);
+    // console.log(data[0].lenderName, data[0].dueDate, data[0].payDate);
     //unpaid debts trans
     for (let i = 0; i < data.length; i++) {
       if (!data[i].payDate) {
