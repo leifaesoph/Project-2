@@ -38,7 +38,11 @@ $(document).ready(function () {
 
 //the req to find the all the loan transaction
   $.get("/api/user_loans").then(function (data) {
-    console.log(data[0].borrowerName, data[1].payDate, data[0].amount);
+
+    //PLEASE COMMENT OUT THIS CONSOLE LOG
+    // console.log(data[0].borrowerName, data[1].payDate, data[0].amount);
+
+
     for (let i = 0; i < data.length; i++) {
       //show all the unpaid trans here 
       if (!data[i].payDate) {
@@ -102,9 +106,12 @@ $(document).ready(function () {
 
   //req to get all the debts trans
   $.get("/api/user_debts").then(function (data) {
-    console.log(data);
-    console.log(data[0].lenderName, data[0].dueDate, data[0].payDate);
+
+    //PLEASE COMMENT OUT THIS CONSOLE LOG
+    // console.log(data);
+    // console.log(data[0].lenderName, data[0].dueDate, data[0].payDate);
     //unpaid debts trans
+    
     for (let i = 0; i < data.length; i++) {
       if (!data[i].payDate) {
         debtTransactionNumber++;
